@@ -1,0 +1,176 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>{% block title %}Default title{% endblock %} - Customer Quiz</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Bootstrap -->
+    <link href="{% get_static_prefix %}bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            padding-top: 60px;
+        }
+    </style>
+    <link href="{% get_static_prefix %}bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="brand" href="http://127.0.0.1:8000/">Customer Quiz</a>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="span5 offset2">
+            <h2 class="text-info">New user?</h2>
+
+            <p class="lead">Join us! </p>
+
+            <p class="lead">Answer following questions, fill registration data and press "Register"</p>
+            <br/>
+        </div>
+        <div class="span3">
+            <form action="/login/" method="POST">{% csrf_token %}
+                <h2 class="text-info">Returning user?</h2>
+                <p class="muted">Please, introduce yourself:</p>
+
+                <div class="control-group">
+                    <div class="controls">
+                        <input type="text" id="inputEmail1" placeholder="Email">
+                        <input type="password" id="inputPassword1" placeholder="Password">
+                        <label class="checkbox">
+                            <input type="checkbox"> Remember me
+                        </label>
+                        <button type="submit" class="btn btn-primary pull-right">Log in</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <form action="/register/" method="GET">
+        <div class="row">
+            <div class="span4 offset4">
+                <fieldset>
+                    <legend class="text-center">Project name</legend>
+                    <input type="text" id="project_name" class="span4">
+                </fieldset>
+            </div>
+        </div>
+        <div class="row">
+            <div class="span3 offset3">
+                <fieldset>
+                    <legend>{{ question_title1 }}</legend>
+                    {% if type1 == 'radio' %}
+                        {% for item in objects1 %}
+                            <label class="radio">
+                                <input type="radio"
+                                       name="radiogroup1"
+                                       id="radio1{{ forloop.counter }}"
+                                       value="option1{{ forloop.counter }}"
+                                       {% if item.text == 'Not sure' %} checked {% endif %}
+                                       >
+                                {{ item.text }}
+                            </label>
+                        {% endfor %}
+                    {% endif %}
+                    {% if type1 == 'checkbox' %}
+                        {% for item in objects1 %}
+                            <label class="checkbox">
+                                <input type="checkbox" value="option1{{ forloop.counter }}"> {{ item.text }}
+                            </label>
+                        {% endfor %}
+                    {% endif %}
+                </fieldset>
+            </div>
+            <div class="span3">
+                <fieldset>
+                    <legend>{{ question_title2 }}</legend>
+                    {% if type2 == 'radio' %}
+                        {% for item in objects2 %}
+                            <label class="radio">
+                                <input type="radio"
+                                       name="radiogroup2"
+                                       id="radio2{{ forloop.counter }}"
+                                       value="option2{{ forloop.counter }}"
+                                        {% if item.text == 'Not sure' %} checked {% endif %}
+                                        >
+                                {{ item.text }}
+                            </label>
+                        {% endfor %}
+                    {% endif %}
+                    {% if type2 == 'checkbox' %}
+                        {% for item in objects2 %}
+                            <label class="checkbox">
+                                <input type="checkbox" value="option2{{ forloop.counter }}"> {{ item.text }}
+                            </label>
+                        {% endfor %}
+                    {% endif %}
+                </fieldset>
+            </div>
+        </div>
+        <p class="lead"></p>
+        <div class="row">
+            <div class="span3 offset3">
+                <fieldset>
+                    <legend>{{ question_title3 }}</legend>
+                    {% if type3 == 'radio' %}
+                        {% for item in objects3 %}
+                            <label class="radio">
+                                <input type="radio"
+                                       name="radiogroup3"
+                                       id="radio3{{ forloop.counter }}"
+                                       value="option3{{ forloop.counter }}"
+                                        {% if item.text == 'Not sure' %} checked {% endif %}
+                                        >
+                                {{ item.text }}
+                            </label>
+                        {% endfor %}
+                    {% endif %}
+                    {% if type3 == 'checkbox' %}
+                        {% for item in objects3 %}
+                            <label class="checkbox">
+                                <input type="checkbox" value="option3{{ forloop.counter }}"> {{ item.text }}
+                            </label>
+                        {% endfor %}
+                    {% endif %}
+                </fieldset>
+            </div>
+            <div class="span3">
+                <legend>Registration data</legend>
+                <div class="control-group">
+                    <div class="controls">
+                        <input type="text" id="inputName" placeholder="Name">
+                        <input type="text" id="inputEmail" placeholder="Email">
+                        <input type="password" id="inputPassword" placeholder="Password">
+                        <label class="checkbox">
+                            <input type="checkbox"> Remember me
+                        </label>
+                        <button type="submit" class="btn btn-primary pull-right">Register</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </form>
+    <div class="row">
+        <div class="span4 offset4">
+            <hr>
+            <p class="text-center muted">
+                <small>© <a href="http://a5.ua">A5.UA</a>, 2013</small>
+            </p>
+        </div>
+    </div>
+</div>
+
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="{% get_static_prefix %}bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>
