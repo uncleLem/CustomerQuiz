@@ -39,6 +39,7 @@
         <div class="span3">
             <form action="/login/" method="POST">{% csrf_token %}
                 <h2 class="text-info">Returning user?</h2>
+
                 <p class="muted">Please, introduce yourself:</p>
 
                 <div class="control-group">
@@ -75,8 +76,8 @@
                                        name="radiogroup1"
                                        id="radio1{{ forloop.counter }}"
                                        value="option1{{ forloop.counter }}"
-                                       {% if item.text == 'Not sure' %} checked {% endif %}
-                                       >
+                                        {% if item.text == 'Not sure' %} checked {% endif %}
+                                        >
                                 {{ item.text }}
                             </label>
                         {% endfor %}
@@ -117,6 +118,7 @@
             </div>
         </div>
         <p class="lead"></p>
+
         <div class="row">
             <div class="span3 offset3">
                 <fieldset>
@@ -150,6 +152,7 @@
                         <input type="text" id="inputName" placeholder="Name">
                         <input type="text" id="inputEmail" placeholder="Email">
                         <input type="password" id="inputPassword" placeholder="Password">
+                        <input type="password" id="inputPasswordRetype" placeholder="Retype password">
                         <label class="checkbox">
                             <input type="checkbox"> Remember me
                         </label>
