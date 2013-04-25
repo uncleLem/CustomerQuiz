@@ -56,7 +56,7 @@
         </div>
     </div>
 
-    <form action="/register/" method="GET">
+    <form action="/register/" method="POST">{% csrf_token %}
         <div class="row">
             <div class="span4 offset4">
                 <fieldset>

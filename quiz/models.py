@@ -1,13 +1,5 @@
+from django.contrib.auth.models import User
 from django.db import models
-
-
-class User(models.Model):
-    login = models.EmailField()
-    passwd = models.CharField(max_length=45)
-    username = models.CharField(max_length=45)
-
-    def __unicode__(self):
-        return '%s (%s)' % (self.username, self.login)
 
 
 class ProjectStatus(models.Model):
@@ -21,6 +13,7 @@ class Project(models.Model):
     name = models.CharField(max_length=75)
     owner = models.ForeignKey(User)
     status = models.ForeignKey(ProjectStatus)
+    real_result = models.FloatField()
 
     def __unicode__(self):
         return '%s [%s] (%s)' % (self.name, self.owner, self.status)
@@ -37,6 +30,7 @@ class QuestionGroup(models.Model):
     position_No = models.IntegerField()
     group_header = models.CharField(max_length=300)
     group_type = models.ForeignKey(GroupType)
+    regression_coefficient = models.FloatField()
 
     def __unicode__(self):
         return 'Group #%d: %s' % (self.position_No, self.group_header)
@@ -47,7 +41,7 @@ class Question(models.Model):
     text = models.CharField(max_length=300)
     id_question_group = models.ForeignKey(QuestionGroup)
     is_valuable = models.BooleanField()
-    value = models.IntegerField()
+    value = models.FloatField()
 
     def __unicode__(self):
         return '%s: %s [%d]' % (self.id_question_group, self.text, self.value)
@@ -62,4 +56,4 @@ class Answer(models.Model):
     value = models.CharField(max_length=300)
 
     def __unicode__(self):
-        return '%s' % self.value
+        return '%s: %s - %s' % (self.project.name, self.question.text, self.value)

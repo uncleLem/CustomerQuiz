@@ -1,0 +1,27 @@
+{% extends 'client/base.html' %}
+{% load static %}
+
+{% block page_content %}
+    <table class="table table-striped table-hover">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Project name</th>
+            <th>Status</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for project in projects %}
+            <tr class="{% if project.status.name == "New" %}error">
+            {% elif project.status.name == "Submitted" %}warning">
+            {% elif project.status.name == "Started" %}info">
+            {% elif project.status.name == "Finished" %}success">
+            {% endif %}
+            <td>{{ forloop.counter }}</td>
+            <td>{{ project.name }}</td>
+            <td>{{ project.status }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

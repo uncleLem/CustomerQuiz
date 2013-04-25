@@ -1,10 +1,12 @@
 {% extends 'client/base.html' %}
 {% load static %}
 
-{% block title %}Please, answer the following questions{% endblock %}
+{% block title %}{{ project }}: {{ question_title }}{% endblock %}
+
+{% block project_name %}: {{ project }} project{% endblock %}
 
 {% block page_content %}
-    <div class="row">
+    <div class="row" xmlns="http://www.w3.org/1999/html">
         <div class="span6 offset1">
             <ul class="nav nav-tabs">
                 {% for item in list %}
@@ -22,35 +24,45 @@
 
     <!-- question content -->
     <div class="row">
-        <div class="span4 offset2">
-            <form>
+        <form action="{{ next }}" method="POST">{% csrf_token %}
+            <div class="span4 offset2">
                 <fieldset>
                     <legend>{{ question_title }}</legend>
                     {% if type == 'radio' %}
-                        {% for item in objects %}
+                        {% comment %}{% for key, value in answers.items %}{% endcomment %}
+                        {% for key, value in answers %}
                             <label class="radio">
-                                <input type="radio" name="radiogroup" id="radio{{ forloop.counter }}"
-                                       value="option{{ forloop.counter }}"> {{ item.text }}
+                                <input type="radio" name="group" value="{{ key.id }}" id="{{ key.id }}"
+                                       {% if value.value == "1" %}checked="true"{% endif %}>
+                                {{ key.text }}
                             </label>
                         {% endfor %}
                     {% endif %}
                     {% if type == 'checkbox' %}
-                        {% for item in objects %}
+                        {% for key, value in answers %}
                             <label class="checkbox">
-                                <input type="checkbox" value="option{{ forloop.counter }}"> {{ item.text }}
+                                <input type="checkbox" name="{{ key.id }}" {% if value.value == "1" %}
+                                       checked="true" {% endif %}>
+                                {{ key.text }}
+                            </label>
+                        {% endfor %}
+                    {% endif %}
+                    {% if type == 'enum' %}
+                        {% for key, value in answers %}
+                            <label>{{ key.text }}
+                                <textarea id="textarea" class="span4" rows="8"
+                                          maxlength="300" name="textarea">{{ value.value }}</textarea>
                             </label>
                         {% endfor %}
                     {% endif %}
                 </fieldset>
-            </form>
-        </div>
-    </div>
-    <!-- proceed -->
-    <!-- proceed -->
-    <div class="row">
-        <div class="span1 offset6">
-            <button type="submit" class="btn btn-primary">Proceed</button>
-        </div>
+            </div>
+            <div class="row">
+                <div class="span1 offset6">
+                    <button type="submit" class="btn btn-primary">Proceed</button>
+                </div>
+            </div>
+        </form>
     </div>
 
 

@@ -1,0 +1,38 @@
+{% extends 'client/base.html' %}
+{% load static %}
+
+{% block title %}New project{% endblock %}
+
+{% block page_content %}
+    <div class="row" xmlns="http://www.w3.org/1999/html">
+        <div class="span6 offset1">
+            <ul class="nav nav-tabs">
+                {% for item in list %}
+                    {% if forloop.counter == active %}
+                        <li class="active">
+                            {% else %}
+                        <li>
+                    {% endif %}
+                <a href="http://127.0.0.1:8000/quiz/{{ item }}">{{ item }}</a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <div class="row">
+        <form action="/quiz/" method="POST">{% csrf_token %}
+            <div class="span4 offset2">
+                <fieldset>
+                    <legend class="text-center">Project name</legend>
+                    <input type="text" name="project_name" class="span4">
+                </fieldset>
+            </div>
+            <div class="span1 offset6">
+                <button type="submit" class="btn btn-primary">Proceed</button>
+            </div>
+        </form>
+    </div>
+
+
+{% endblock %}
