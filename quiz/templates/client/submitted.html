@@ -1,0 +1,18 @@
+{% extends 'client/base.html' %}
+{% load static %}
+
+{% block title %}Submit project?{% endblock %}
+
+{% block page_content %}
+    <div class="row">
+        <div class="span6 offset1">
+            <p class="lead">
+                Project <b>"{{ project.name }}"</b> was submitted to manager:
+            </p>
+
+            <p class="lead">
+                We will contact you ASAP.
+            </p>
+        </div>
+    </div>
+{% endblock %}

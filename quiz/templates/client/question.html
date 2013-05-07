@@ -5,6 +5,32 @@
 
 {% block project_name %}: {{ project }} project{% endblock %}
 
+{% block custom_scripts %}
+
+    <script language="javascript"><!--
+
+    var count = 0;
+    {% for i in answers %}
+        count++;
+    {% endfor %}
+
+    function CreateFormElement() {
+
+        var Form = document.getElementById('form')
+        var Inner = document.createElement('input');
+        Inner.type = 'text';
+        Inner.value = '';
+        Inner.name = 'text' + count;
+        Inner.className = 'span4'
+        count++;
+        Form.appendChild(Inner);
+
+        var Br = document.createElement('br');
+        Form.appendChild(Br);
+    }
+    --></script>
+{% endblock %}
+
 {% block page_content %}
     <div class="row" xmlns="http://www.w3.org/1999/html">
         <div class="span6 offset1">
@@ -24,8 +50,8 @@
 
     <!-- question content -->
     <div class="row">
-        <form action="{{ next }}" method="POST">{% csrf_token %}
-            <div class="span4 offset2">
+        <div class="span4 offset2">
+            <form action="{{ next }}" method="POST" id="form">{% csrf_token %}
                 <fieldset>
                     <legend>{{ question_title }}</legend>
                     {% if type == 'radio' %}
@@ -48,21 +74,25 @@
                         {% endfor %}
                     {% endif %}
                     {% if type == 'enum' %}
-                        {% for key, value in answers %}
-                            <label>{{ key.text }}
-                                <textarea id="textarea" class="span4" rows="8"
-                                          maxlength="300" name="textarea">{{ value.value }}</textarea>
-                            </label>
-                        {% endfor %}
+                        <label>{{ key.text }}
+                            {% for key, value in answers %}
+                                <input type="text" value="{{ value.value }}" name="text{{ forloop.counter0 }}"
+                                       class="span4">
+                            {% endfor %}
+                        </label>
                     {% endif %}
                 </fieldset>
+            </form>
+
+            <button form="form" type="button" onclick="CreateFormElement()" class="btn">Add requirement</button>
+        </div>
+        <div class="row">
+            <div class="offset5">
+                <button form="form" type="submit" class="btn btn-primary">Proceed <i
+                        class="icon-arrow-right icon-white"></i>
+                </button>
             </div>
-            <div class="row">
-                <div class="span1 offset6">
-                    <button type="submit" class="btn btn-primary">Proceed</button>
-                </div>
-            </div>
-        </form>
+        </div>
     </div>
 
 

@@ -40,6 +40,12 @@ def question_sample(request, offset):
                           real_result=0)
         project.save()
         request.session['project'] = project
+    elif 'pid' in request.POST:
+        try:
+            project = Project.objects.get(id=request.POST['pid'], owner=request.user)
+            request.session['project'] = project
+        except Project.DoesNotExist:
+            raise Http404()
     elif 'project' in request.session:
         project = request.session['project']
         saveAnswers(request=request, project=project, offset=offset - 1)
@@ -54,11 +60,20 @@ def question_sample(request, offset):
     group = QuestionGroup.objects.get(position_No=offset)
     objects = Question.objects.filter(id_question_group=group)
     answers = []
-    for q in objects:
-        try:
-            answers.append((q, Answer.objects.get(project=project, question=q)))
-        except Answer.DoesNotExist:
-            answers.append((q, Answer(project=project, question=q, value='')))
+    if group.group_type.group_type == 'enum':
+        for q in objects:
+            try:
+                tmp_set = Answer.objects.filter(project=project, question=q)
+                for item in tmp_set:
+                    answers.append((q, item))
+            except Answer.DoesNotExist:
+                answers.append((q, Answer(project=project, question=q, value='')))
+    else:
+        for q in objects:
+            try:
+                answers.append((q, Answer.objects.get(project=project, question=q)))
+            except Answer.DoesNotExist:
+                answers.append((q, Answer(project=project, question=q, value='')))
 
     return render_to_response('client/question.html',
                               {'list': questions_list,
@@ -85,6 +100,23 @@ def my_projects(request):
                               RequestContext(request))
 
 
+def project_info(request):
+    if 'pid' in request.GET:
+        id = request.GET['pid']
+        try:
+            project = Project.objects.get(owner=request.user, id=id)
+            info = getInfo(project)
+        except Project.DoesNotExist:
+            raise Http404()
+    else:
+        raise Http404()
+    return render_to_response('client/project_info.html',
+                              {'project': project,
+                               'info': info,
+                               'active_section': 'new'},
+                              RequestContext(request))
+
+
 def finish(request):
     if not request.user.is_authenticated():
         raise Http404()
@@ -92,14 +124,62 @@ def finish(request):
     if 'project' in request.session:
         project = request.session['project']
         saveAnswers(request=request, project=project, offset=offset)
+        info = getInfo(project)
     else:
         raise Http404()
-    return render_to_response('common/404.html',
-                              {'active_section': 'new'},
+    return render_to_response('client/project_info.html',
+                              {'project': project,
+                               'info': info,
+                               'active_section': 'new'},
                               RequestContext(request))
 
 
+def submitted(request):
+    if 'pid' in request.POST:
+        id = request.POST['pid']
+        try:
+            project = Project.objects.get(owner=request.user, id=id)
+            status = ProjectStatus.objects.get(name='Submitted')
+            project.status = status
+            project.save()
+        except Project.DoesNotExist:
+            raise Http404()
+    return render_to_response('client/submitted.html',
+                              {'project': project,
+                               'active_section': 'new'},
+                              RequestContext(request))
+
+
+def getInfo(project):
+    groups = QuestionGroup.objects.all()
+    info = []
+    for group in groups:
+        objects = Question.objects.filter(id_question_group=group)
+        answers = []
+        for q in objects:
+            try:
+                if group.group_type.group_type == 'enum':
+                    tmp_set = Answer.objects.filter(project=project, question=q)
+                    for answer in tmp_set:
+                        answers.append(answer.value)
+                else:
+                    answer = Answer.objects.get(project=project, question=q)
+                    if not (answer.value == '0' or answer.value == ''):
+                        answers.append(str(q.text))
+            except Answer.DoesNotExist:
+                print 'show must go on'
+        info.append((group.group_header, answers))
+    return info
+
+
 def main(request):
+    if request.user.is_authenticated:
+        projects = Project.objects.filter(owner=request.user)
+        return render_to_response('client/my_projects.html',
+                                  {'projects': projects,
+                                   'active_section': 'projects'},
+                                  RequestContext(request))
+
     group1 = QuestionGroup.objects.get(position_No=1)
     objects1 = Question.objects.filter(id_question_group=group1)
     group2 = QuestionGroup.objects.get(position_No=2)
@@ -147,15 +227,21 @@ def saveAnswers(request, project, offset):
                         answer.save()
             elif prev_group_type == 'enum':
                 # split: str(answer.value).split('\\n')
+                i = 0
                 for q in prev_questions:
-                    result = request.POST['textarea']
                     try:
-                        answer = Answer.objects.get(project=project, question=q)
-                        answer.value = result
-                        answer.save()
+                        tmp_set = Answer.objects.filter(project=project, question=q)
+                        for answer in tmp_set:
+                            answer.delete()
                     except Answer.DoesNotExist:
-                        answer = Answer(project=project, question=q, value=result)
-                        answer.save()
+                        print 'nothing to delete'
+
+                    while 'text' + str(i) in request.POST:
+                        result = request.POST['text' + str(i)]
+                        i += 1
+                        if not result == '':
+                            answer = Answer(project=project, question=q, value=result)
+                            answer.save()
             elif prev_group_type == 'checkbox':
                 for q in prev_questions:
                     if str(q.id) in request.POST:

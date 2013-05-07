@@ -1,0 +1,52 @@
+{% extends 'client/base.html' %}
+{% load static %}
+
+{% block title %}Info about "{{ project.name }}" project{% endblock %}
+
+{% block page_content %}
+    <div class="row">
+        <div class="span6 offset1">
+            <p class="lead">
+                Project <b>"{{ project.name }}"</b>:
+            </p>
+            <table class="table table-condensed table-bordered table-hover">
+                <thead>
+                <tr>
+                    <th>Option</th>
+                    <th>Your choice</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for key, value in info %}
+                    <tr>
+                        <td>{{ key }}</td>
+                        <td>
+                            {% for item in value %}
+                                {{ item }}<br>
+                            {% endfor %}
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            <p class="lead text-center">
+                Submit project <b>"{{ project.name }}"</b> to manager?<br>
+                <button class="btn btn-inverse btn-large" type="submit" form="projects"><i
+                        class="icon-backward icon-white"></i> Later
+                </button>
+                <button class="btn btn-info btn-large {% if project.status.name != 'New' %}disabled{% endif %}"
+                        {% if project.status.name != 'New' %}disabled="disabled"{% endif %} type="submit" form="quiz"><i
+                        class="icon-edit icon-white"></i> Edit
+                </button>
+                <button class="btn btn-success btn-large" type="submit" form="submit">Submit <i
+                        class="icon-forward icon-white"></i></button>
+            <form action="/projects/" id="projects" method="POST">{% csrf_token %}</form>
+            <form action="/quiz/" id="quiz" method="POST">{% csrf_token %}<input type="hidden" value="{{ project.id }}"
+                                                                                 name="pid"></form>
+            <form action="/submitted/" id="submit" method="POST">{% csrf_token %}<input type="hidden"
+                                                                                        value="{{ project.id }}"
+                                                                                        name="pid"></form>
+            </p>
+        </div>
+    </div>
+{% endblock %}

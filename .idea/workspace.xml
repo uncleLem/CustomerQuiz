@@ -2,26 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b4bf086f-35b9-4add-95e3-2ab91ff782df" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quiz/templates/client/my_projects.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quiz/templates/client/new_project.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quiz/templates/client/project_info.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/quiz/templates/client/submitted.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/quiz/templates/client/base.html" afterPath="$PROJECT_DIR$/quiz/templates/client/base.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/quiz/templates/common/base.html" afterPath="$PROJECT_DIR$/quiz/templates/common/base.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/quiz/models.py" afterPath="$PROJECT_DIR$/quiz/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/quiz/templates/client/my_projects.html" afterPath="$PROJECT_DIR$/quiz/templates/client/my_projects.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/quiz/templates/client/question.html" afterPath="$PROJECT_DIR$/quiz/templates/client/question.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CustomerQuiz/urls.py" afterPath="$PROJECT_DIR$/CustomerQuiz/urls.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/quiz/views.py" afterPath="$PROJECT_DIR$/quiz/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/quiz/templates/common/welcome.html" afterPath="$PROJECT_DIR$/quiz/templates/common/welcome.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="CustomerQuiz.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/settings.py" changelist="b4bf086f-35b9-4add-95e3-2ab91ff782df" time="1361374522835" ignored="false" />
-    <file path="/views.py" changelist="b4bf086f-35b9-4add-95e3-2ab91ff782df" time="1366858032268" ignored="false" />
-    <file path="/urls.py" changelist="b4bf086f-35b9-4add-95e3-2ab91ff782df" time="1366857397163" ignored="false" />
+    <file path="/views.py" changelist="b4bf086f-35b9-4add-95e3-2ab91ff782df" time="1367960387691" ignored="false" />
+    <file path="/urls.py" changelist="b4bf086f-35b9-4add-95e3-2ab91ff782df" time="1367179495821" ignored="false" />
     <file path="/time.html" changelist="b4bf086f-35b9-4add-95e3-2ab91ff782df" time="1361235191819" ignored="false" />
     <file path="/header.html" changelist="b4bf086f-35b9-4add-95e3-2ab91ff782df" time="1361234497778" ignored="false" />
-    <file path="/base.html" changelist="b4bf086f-35b9-4add-95e3-2ab91ff782df" time="1366857937551" ignored="false" />
-    <file path="/question.html" changelist="b4bf086f-35b9-4add-95e3-2ab91ff782df" time="1366857743534" ignored="false" />
+    <file path="/base.html" changelist="b4bf086f-35b9-4add-95e3-2ab91ff782df" time="1367958318493" ignored="false" />
+    <file path="/question.html" changelist="b4bf086f-35b9-4add-95e3-2ab91ff782df" time="1367959523266" ignored="false" />
     <file path="$PROJECT_DIR$/quiz/templates/base_test.html" changelist="b4bf086f-35b9-4add-95e3-2ab91ff782df" time="1361304985950" ignored="false" />
     <file path="/404.html" changelist="b4bf086f-35b9-4add-95e3-2ab91ff782df" time="1366664189739" ignored="false" />
     <file path="/models.py" changelist="b4bf086f-35b9-4add-95e3-2ab91ff782df" time="1366855882570" ignored="false" />
@@ -29,9 +28,9 @@
     <file path="/main.html" changelist="b4bf086f-35b9-4add-95e3-2ab91ff782df" time="1364974758704" ignored="false" />
     <file path="/qblock.html" changelist="b4bf086f-35b9-4add-95e3-2ab91ff782df" time="1364971722728" ignored="false" />
     <file path="/helper.py" changelist="b4bf086f-35b9-4add-95e3-2ab91ff782df" time="1364971870096" ignored="false" />
-    <file path="/fragment.py" changelist="b4bf086f-35b9-4add-95e3-2ab91ff782df" time="1366856486351" ignored="false" />
+    <file path="/fragment.py" changelist="b4bf086f-35b9-4add-95e3-2ab91ff782df" time="1367960122949" ignored="false" />
     <file path="/welcome.html" changelist="b4bf086f-35b9-4add-95e3-2ab91ff782df" time="1366663236951" ignored="false" />
-    <file path="/Dummy.txt" changelist="b4bf086f-35b9-4add-95e3-2ab91ff782df" time="1366840338380" ignored="false" />
+    <file path="/Dummy.txt" changelist="b4bf086f-35b9-4add-95e3-2ab91ff782df" time="1367956116835" ignored="false" />
     <file path="/a.dummy" changelist="b4bf086f-35b9-4add-95e3-2ab91ff782df" time="1366286549668" ignored="false" />
     <file path="$APPLICATION_HOME_DIR$/lib/pycharm.jar!/standardSchemas/html5/xhtml5.xsd" changelist="b4bf086f-35b9-4add-95e3-2ab91ff782df" time="1366662551939" ignored="false" />
     <file path="$APPLICATION_HOME_DIR$/lib/pycharm.jar!/standardSchemas/XMLSchema.xsd" changelist="b4bf086f-35b9-4add-95e3-2ab91ff782df" time="1366662551939" ignored="false" />
@@ -46,7 +45,11 @@
     <file path="$APPLICATION_HOME_DIR$/lib/pycharm.jar!/standardSchemas/catalog.xsd" changelist="b4bf086f-35b9-4add-95e3-2ab91ff782df" time="1366662551942" ignored="false" />
     <file path="$APPLICATION_HOME_DIR$/lib/pycharm.jar!/standardSchemas/XMLSchema-instance.xsd" changelist="b4bf086f-35b9-4add-95e3-2ab91ff782df" time="1366662551943" ignored="false" />
     <file path="/new_project.html" changelist="b4bf086f-35b9-4add-95e3-2ab91ff782df" time="1366857914697" ignored="false" />
-    <file path="/my_projects.html" changelist="b4bf086f-35b9-4add-95e3-2ab91ff782df" time="1366858368816" ignored="false" />
+    <file path="/my_projects.html" changelist="b4bf086f-35b9-4add-95e3-2ab91ff782df" time="1367178114537" ignored="false" />
+    <file path="/submit.html" changelist="b4bf086f-35b9-4add-95e3-2ab91ff782df" time="1367177020098" ignored="false" />
+    <file path="/project_info.html" changelist="b4bf086f-35b9-4add-95e3-2ab91ff782df" time="1367179991438" ignored="false" />
+    <file path="/submitted.html" changelist="b4bf086f-35b9-4add-95e3-2ab91ff782df" time="1367177727603" ignored="false" />
+    <file path="/test.html" changelist="b4bf086f-35b9-4add-95e3-2ab91ff782df" time="1367956654117" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,28 +74,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="question.html" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="question.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/quiz/templates/client/question.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="53" column="63" selection-start="2359" selection-end="2359" vertical-scroll-proportion="-32.260868">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="base.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/quiz/templates/client/base.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="32" selection-start="198" selection-end="212" vertical-scroll-proportion="-4.2608695">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="new_project.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/quiz/templates/client/new_project.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="28" selection-start="80" selection-end="80" vertical-scroll-proportion="-1.826087">
+            <state line="79" column="53" selection-start="2973" selection-end="2973" vertical-scroll-proportion="0.32683983">
               <folding />
             </state>
           </provider>
@@ -101,18 +86,7 @@
       <file leaf-file-name="urls.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/CustomerQuiz/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="34" selection-start="675" selection-end="683" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="e#0#51#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="my_projects.html" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/quiz/templates/client/my_projects.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="26" column="14" selection-start="835" selection-end="835" vertical-scroll-proportion="0.51267606">
+            <state line="11" column="50" selection-start="376" selection-end="376" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -121,10 +95,17 @@
       <file leaf-file-name="views.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/quiz/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="96" column="30" selection-start="3234" selection-end="3234" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="e#50#81#0" expanded="true" />
-              </folding>
+            <state line="243" column="41" selection-start="9361" selection-end="9361" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="project_info.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/quiz/templates/client/project_info.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="3" column="56" selection-start="108" selection-end="108" vertical-scroll-proportion="3.1304348">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -132,10 +113,8 @@
       <file leaf-file-name="models.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/quiz/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="37" selection-start="443" selection-end="443" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="e#0#43#0" expanded="true" />
-              </folding>
+            <state line="22" column="56" selection-start="626" selection-end="630" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -143,7 +122,7 @@
       <file leaf-file-name="welcome.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/quiz/templates/common/welcome.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="39" column="65" selection-start="1229" selection-end="1245" vertical-scroll-proportion="-12.173913">
+            <state line="39" column="65" selection-start="1229" selection-end="1245" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -167,22 +146,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/quiz/admin.py" />
-        <option value="$PROJECT_DIR$/CustomerQuiz/settings.py" />
-        <option value="$PROJECT_DIR$/quiz/templates/common/qblock.html" />
-        <option value="$PROJECT_DIR$/quiz/helper.py" />
         <option value="$PROJECT_DIR$/quiz/templates/common/main.html" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/quiz/templates/common/welcome.html" />
         <option value="$PROJECT_DIR$/quiz/templates/common/404.html" />
         <option value="$PROJECT_DIR$/quiz/models.py" />
-        <option value="$PROJECT_DIR$/quiz/templates/common/base.html" />
-        <option value="$PROJECT_DIR$/CustomerQuiz/urls.py" />
-        <option value="$PROJECT_DIR$/quiz/templates/client/question.html" />
         <option value="$PROJECT_DIR$/quiz/templates/client/new_project.html" />
+        <option value="$PROJECT_DIR$/quiz/templates/client/submit.html" />
+        <option value="$PROJECT_DIR$/quiz/templates/client/submitted.html" />
         <option value="$PROJECT_DIR$/quiz/templates/client/base.html" />
-        <option value="$PROJECT_DIR$/quiz/views.py" />
+        <option value="$PROJECT_DIR$/CustomerQuiz/urls.py" />
+        <option value="$PROJECT_DIR$/quiz/templates/client/project_info.html" />
         <option value="$PROJECT_DIR$/quiz/templates/client/my_projects.html" />
+        <option value="$PROJECT_DIR$/quiz/templates/client/test.html" />
+        <option value="$PROJECT_DIR$/quiz/templates/common/base.html" />
+        <option value="$PROJECT_DIR$/quiz/views.py" />
+        <option value="$PROJECT_DIR$/quiz/templates/client/question.html" />
       </list>
     </option>
   </component>
@@ -363,6 +342,26 @@
     </key>
   </component>
   <component name="RunManager" selected="Django server.CustomerQuiz">
+    <configuration default="true" type="DjangoTestsConfigurationType" factoryName="Django tests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="CustomerQuiz" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="TARGET" value="" />
+      <option name="SETTINGS_FILE" value="" />
+      <option name="CUSTOM_SETTINGS" value="false" />
+      <option name="USE_OPTIONS" value="false" />
+      <option name="OPTIONS" value="" />
+      <method />
+    </configuration>
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -534,30 +533,35 @@
       <created>1366662948514</created>
       <updated>1366662948514</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="added &quot;My projects&quot; and &quot;New project&quot; pages&#10;adding answers to db and receiving from db&#10;users - from django.auth&#10;refactoring in html documents">
+      <created>1366858868802</created>
+      <updated>1366858868802</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="-4" width="1602" height="905" extended-state="6" />
     <editor active="true" />
     <layout>
+      <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" x="99" y="96" width="1402" height="705" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32806325" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32947233" sideWeight="0.672391" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32947233" sideWeight="0.672391" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25546977" sideWeight="0.67193675" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26190478" sideWeight="0.6732543" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4229249" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32674572" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32674572" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32806325" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -603,7 +607,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="IDE update and project convert&#10;minor changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="added &quot;My projects&quot; and &quot;New project&quot; pages&#10;adding answers to db and receiving from db&#10;users - from django.auth&#10;refactoring in html documents" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -620,42 +624,26 @@
     <MESSAGE value="initial commit" />
     <MESSAGE value="readme update" />
     <MESSAGE value="IDE update and project convert&#10;minor changes" />
+    <MESSAGE value="added &quot;My projects&quot; and &quot;New project&quot; pages&#10;adding answers to db and receiving from db&#10;users - from django.auth&#10;refactoring in html documents" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="39" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/quiz/views.py</url>
+          <line>125</line>
+          <option name="timeStamp" value="41" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/quiz/views.py</url>
+          <line>238</line>
+          <option name="timeStamp" value="43" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="44" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/quiz/templates/manager/base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="13" selection-start="346" selection-end="346" vertical-scroll-proportion="0.23728813" />
-      </provider>
-    </entry>
-    <entry file="file:///usr/local/lib/python2.7/dist-packages/django/template/defaulttags.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="595" column="4" selection-start="21576" selection-end="21576" vertical-scroll-proportion="0.33286908" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="0" selection-start="103" selection-end="103" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/quiz/templates/common/404.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="72" selection-start="199" selection-end="199" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CustomerQuiz/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="114" column="24" selection-start="4256" selection-end="4275" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///usr/local/lib/python2.7/dist-packages/django/contrib/auth/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="224" column="10" selection-start="7935" selection-end="7939" vertical-scroll-proportion="0.0" />
@@ -663,76 +651,96 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/quiz/templates/common/welcome.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="39" column="65" selection-start="1229" selection-end="1245" vertical-scroll-proportion="-12.173913">
+        <state line="39" column="65" selection-start="1229" selection-end="1245" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file:///usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="113" column="59" selection-start="4949" selection-end="4949" vertical-scroll-proportion="1.9122807">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/quiz/templates/common/base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="80" selection-start="897" selection-end="897" vertical-scroll-proportion="-3.5217392">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/quiz/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="37" selection-start="443" selection-end="443" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#0#43#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CustomerQuiz/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="34" selection-start="675" selection-end="683" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#0#51#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/quiz/templates/client/question.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="53" column="63" selection-start="2359" selection-end="2359" vertical-scroll-proportion="-32.260868">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/quiz/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="96" column="30" selection-start="3234" selection-end="3234" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#50#81#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/quiz/templates/client/base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="32" selection-start="198" selection-end="212" vertical-scroll-proportion="-4.2608695">
-          <folding />
-        </state>
+        <state line="113" column="59" selection-start="4949" selection-end="4949" vertical-scroll-proportion="1.9122807" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/quiz/templates/client/new_project.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="28" selection-start="80" selection-end="80" vertical-scroll-proportion="-1.826087">
+        <state line="23" column="60" selection-start="702" selection-end="748" vertical-scroll-proportion="0.54545456">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/quiz/templates/client/my_projects.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="14" selection-start="835" selection-end="835" vertical-scroll-proportion="0.51267606">
+        <state line="16" column="23" selection-start="463" selection-end="463" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/quiz/templates/client/submitted.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="41" selection-start="377" selection-end="377" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/lib/python2.7/dist-packages/django/contrib/admin/sites.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="339" column="32" selection-start="13400" selection-end="13400" vertical-scroll-proportion="0.39185393">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/quiz/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="56" selection-start="626" selection-end="630" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/lib/pycharm.jar!/resources/html5-schema/web-forms.rnc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="464" column="23" selection-start="10093" selection-end="10093" vertical-scroll-proportion="0.33195877">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/quiz/templates/client/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="25" selection-start="25" selection-end="25" vertical-scroll-proportion="-0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/quiz/templates/common/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="62" column="7" selection-start="2073" selection-end="2073" vertical-scroll-proportion="0.92802054">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/quiz/templates/client/project_info.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="56" selection-start="108" selection-end="108" vertical-scroll-proportion="3.1304348">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/quiz/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="243" column="41" selection-start="9361" selection-end="9361" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CustomerQuiz/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="50" selection-start="376" selection-end="376" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/quiz/templates/client/question.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="79" column="53" selection-start="2973" selection-end="2973" vertical-scroll-proportion="0.32683983">
           <folding />
         </state>
       </provider>
