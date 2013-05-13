@@ -43,6 +43,9 @@ class QuestionGroup(models.Model):
     def __unicode__(self):
         return 'Group #%d: %s' % (self.position_No, self.group_header)
 
+    class Meta:
+        ordering = ["position_No"]
+
 
 class Question(models.Model):
     position = models.IntegerField()
