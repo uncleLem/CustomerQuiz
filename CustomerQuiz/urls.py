@@ -7,17 +7,20 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-                       ('^$', main), # default page
+                       ('^$', main_default), # default page
                        ('^quiz/$', default_question_sample),
                        ('^quiz/(\d)/$', question_sample),
                        ('^404/$', err404),
-                       ('^main/$', main),
+                       ('^main/$', main_default),
                        ('^login/$', login),
+                       ('^logout/$', logout),
                        ('^register/$', register),
                        ('^new/$', new),
                        ('^finish/$', finish),
                        ('^projects/$', my_projects),
                        ('^project_info/$', project_info),
+                       ('^contacts/$', contacts),
+                       ('^clients/$', clients),
                        ('^submitted/$', submitted),
                        # Examples:
                        # url(r'^$', 'CustomerQuiz.views.home', name='home'),

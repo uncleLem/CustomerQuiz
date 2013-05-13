@@ -1,0 +1,23 @@
+{% extends 'client/base.html' %}
+{% load static %}
+
+{% block title %}My contacts{% endblock %}
+
+{% block page_content %}
+
+    <!-- question content -->
+    <div class="row">
+        <div class="span4 offset2">
+            <p class="lead">How may we contact you?</p>
+
+            <form action="/contacts/" method="POST" id="form">{% csrf_token %}
+                <textarea id="text" name="text" rows="7" class="span4" maxlength="300">{{ value }}</textarea><br>
+                <button type="submit" class="btn btn-primary pull-right">Save <i
+                        class="icon-arrow-right icon-white"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+
+
+{% endblock %}

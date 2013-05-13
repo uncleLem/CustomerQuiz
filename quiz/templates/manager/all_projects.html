@@ -1,0 +1,39 @@
+{% extends 'manager/base.html' %}
+{% load static %}
+
+{% block title %}My projects{% endblock %}
+
+{% block page_content %}
+    <div class="row">
+        <div class="span6 offset1">
+            <table class="table table-striped table-hover">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Owner</th>
+                    <th>Project name</th>
+                    <th>Status</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for project in projects %}
+                    <tr onclick="document.forms['form{{ forloop.counter }}'].submit()"
+                        class="{% if project.status.name == "New" %}error
+                        {% elif project.status.name == "Submitted" %}success
+                        {% elif project.status.name == "Started" %}warning
+                        {% elif project.status.name == "Finished" %}info
+                        {% endif %}
+                        ">
+                        <form action="/project_info/" method="GET" name="form{{ forloop.counter }}">
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ project.owner }}</td>
+                            <td>{{ project.name }}<input type="hidden" value="{{ project.id }}" name="pid"></td>
+                            <td>{{ project.status }}</td>
+                        </form>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

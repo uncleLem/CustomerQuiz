@@ -9,6 +9,14 @@ class ProjectStatus(models.Model):
         return self.name
 
 
+class Contacts(models.Model):
+    user = models.ForeignKey(User)
+    value = models.CharField(max_length=300)
+
+    def __unicode__(self):
+        return '%s: %s' % (self.user, self.value)
+
+
 class Project(models.Model):
     name = models.CharField(max_length=75)
     owner = models.ForeignKey(User)

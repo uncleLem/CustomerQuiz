@@ -51,9 +51,15 @@
     <!-- question content -->
     <div class="row">
         <div class="span4 offset2">
+
             <form action="{{ next }}" method="POST" id="form">{% csrf_token %}
                 <fieldset>
                     <legend>{{ question_title }}</legend>
+                    {% if type == 'enum' %}
+                        <button form="form" type="button" onclick="CreateFormElement()" class="btn pull-right"><i
+                                class="icon-plus"></i> Add
+                        </button><br><br>{% endif %}
+
                     {% if type == 'radio' %}
                         {% comment %}{% for key, value in answers.items %}{% endcomment %}
                         {% for key, value in answers %}
@@ -83,9 +89,16 @@
                     {% endif %}
                 </fieldset>
             </form>
-
-            <button form="form" type="button" onclick="CreateFormElement()" class="btn">Add requirement</button>
         </div>
+        {% comment %}{% if type == 'enum' %}
+            <div class="row">
+                <div class="offset4">
+                    <button form="form" type="button" onclick="CreateFormElement()" class="btn pull-right"><i
+                            class="icon-plus"></i> Add requirement
+                    </button>
+                </div>
+            </div>
+        {% endif %}{% endcomment %}
         <div class="row">
             <div class="offset5">
                 <button form="form" type="submit" class="btn btn-primary">Proceed <i

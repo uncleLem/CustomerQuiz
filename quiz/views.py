@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 # Create your views here.
-from django.http import Http404
+from django.contrib import auth
+from django.db import IntegrityError
+from django.http import Http404, HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.template.context import RequestContext
 
@@ -93,8 +95,15 @@ def new(request):
 
 
 def my_projects(request):
-    projects = Project.objects.filter(owner=request.user)
-    return render_to_response('client/my_projects.html',
+    if not request.user.is_staff:
+        projects = Project.objects.filter(owner=request.user)
+        return render_to_response('client/my_projects.html',
+                                  {'projects': projects,
+                                   'active_section': 'projects'},
+                                  RequestContext(request))
+
+    projects = Project.objects.all()
+    return render_to_response('manager/all_projects.html',
                               {'projects': projects,
                                'active_section': 'projects'},
                               RequestContext(request))
@@ -114,6 +123,32 @@ def project_info(request):
                               {'project': project,
                                'info': info,
                                'active_section': 'new'},
+                              RequestContext(request))
+
+
+def contacts(request):
+    if not request.user.is_authenticated:
+        raise Http404()
+    try:
+        contact = Contacts.objects.get(user=request.user)
+    except Contacts.DoesNotExist:
+        contact = Contacts(user=request.user, value='')
+    if 'text' in request.POST:
+        contact.value = request.POST['text']
+        contact.save()
+    return render_to_response('client/contacts.html',
+                              {'active_section': 'contacts',
+                               'value': contact.value},
+                              RequestContext(request))
+
+
+def clients(request):
+    if not request.user.is_authenticated or not request.user.is_staff:
+        raise Http404()
+    contacts = Contacts.objects.all()
+    return render_to_response('manager/clients.html',
+                              {'active_section': 'contacts',
+                               'contacts': contacts},
                               RequestContext(request))
 
 
@@ -172,8 +207,12 @@ def getInfo(project):
     return info
 
 
-def main(request):
-    if request.user.is_authenticated:
+def main_default(request):
+    return main(request=request, username_is_ok=True, username='')
+
+
+def main(request, username_is_ok, username):
+    if request.user.is_authenticated():
         projects = Project.objects.filter(owner=request.user)
         return render_to_response('client/my_projects.html',
                                   {'projects': projects,
@@ -195,15 +234,96 @@ def main(request):
                                'type2': group2.group_type.__unicode__(),
                                'question_title3': group3.group_header,
                                'objects3': objects3,
-                               'type3': group3.group_type.__unicode__()}, RequestContext(request))
+                               'type3': group3.group_type.__unicode__(),
+                               'username_is_ok': username_is_ok,
+                               'username': username}, RequestContext(request))
 
 
 def register(request):
-    return render_to_response('common/404.html', {})
+    try:
+        user = User.objects.create_user(username=request.POST['inputName'],
+                                        email=request.POST['inputEmail'],
+                                        password=request.POST['inputPassword'])
+        user.first_name = request.POST['inputFirst']
+        user.last_name = request.POST['inputLast']
+        user.is_staff = False
+        user.save()
+        user = auth.authenticate(username=user.username, password=request.POST['inputPassword'])
+        if user is not None and user.is_active:
+            # Правильный пароль и пользователь "активен"
+            auth.login(request, user)
+            # Перенаправление на "правильную" страницу
+            project = Project(owner=user,
+                              name=request.POST['first_project_name'],
+                              status=ProjectStatus.objects.get(name='New'),
+                              real_result=0)
+            project.save()
+            request.session['project'] = project
+
+            saveFromWelcomePage(request=request, project=project, offset=1)
+            saveFromWelcomePage(request=request, project=project, offset=2)
+            saveFromWelcomePage(request=request, project=project, offset=3)
+
+            return HttpResponseRedirect("/quiz/4/")
+        else:
+            # Отображение страницы с ошибкой
+            return HttpResponseRedirect("/404/")
+    except IntegrityError:
+        return main(request, False, request.POST['inputName'])
+
+
+def saveFromWelcomePage(request, project, offset):
+    try:
+        prev_group = QuestionGroup.objects.get(position_No=int(offset))
+        prev_group_type = prev_group.group_type.__unicode__()
+        prev_questions = Question.objects.filter(id_question_group=prev_group)
+        if prev_group_type == 'radio':
+            for q in prev_questions:
+                if str(q.id) == request.POST['radiogroup' + str(offset)]:
+                    result = '1'
+                else:
+                    result = '0'
+                try:
+                    answer = Answer.objects.get(project=project, question=q)
+                    answer.value = result
+                    answer.save()
+                except Answer.DoesNotExist:
+                    answer = Answer(project=project, question=q, value=result)
+                    answer.save()
+        elif prev_group_type == 'checkbox':
+            for q in prev_questions:
+                if str(q.id) in request.POST:
+                    result = '1'
+                else:
+                    result = '0'
+                try:
+                    answer = Answer.objects.get(project=project, question=q)
+                    answer.value = result
+                    answer.save()
+                except Answer.DoesNotExist:
+                    answer = Answer(project=project, question=q, value=result)
+                    answer.save()
+    except Question.DoesNotExist:
+        print("can't find Question for id=" + str(request.POST['group']))
 
 
 def login(request):
-    return render_to_response('common/404.html', {})
+    username = request.POST['username']
+    password = request.POST['password']
+    user = auth.authenticate(username=username, password=password)
+    if user is not None and user.is_active:
+        # Правильный пароль и пользователь "активен"
+        auth.login(request, user)
+        # Перенаправление на "правильную" страницу
+        return HttpResponseRedirect("/projects/")
+    else:
+        # Отображение страницы с ошибкой
+        return HttpResponseRedirect("/404/")
+
+
+def logout(request):
+    auth.logout(request)
+    return HttpResponseRedirect("/")
 
 
 def saveAnswers(request, project, offset):

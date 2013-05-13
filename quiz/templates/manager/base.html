@@ -2,14 +2,12 @@
 {% load static %}
 
 
-<div class="span2 offset1">
-    {% block left_column %}
-        <ul class="nav nav-stacked nav-tabs">
-            <li class="active">
-                <a href="#">Projects</a>
-            </li>
-            <li><a href="#">Clients</a></li>
-            <li><a href="#">Quit</a></li>
-        </ul>
-    {% endblock %}
-</div>
+{% block left_column %}
+    <ul class="nav nav-stacked nav-tabs">
+        <li {% if active_section == 'projects' %} class="active"{% endif %}><a href="/projects/"><i
+                class="icon-th-list"></i> Projects</a></li>
+        <li {% if active_section == 'contacts' %} class="active"{% endif %}><a href="/clients/"><i
+                class="icon-user"></i> Clients</a></li>
+        <li><a href="/logout/"><i class="icon-off"></i> Log out</a></li>
+    </ul>
+{% endblock %}

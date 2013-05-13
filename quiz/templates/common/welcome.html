@@ -37,31 +37,30 @@
             <br/>
         </div>
         <div class="span3">
-            <form action="/login/" method="POST">{% csrf_token %}
-                <h2 class="text-info">Returning user?</h2>
+            <h2 class="text-info">Returning user?</h2>
 
-                <p class="muted">Please, introduce yourself:</p>
+            <p class="muted">Please, introduce yourself:</p>
 
-                <div class="control-group">
-                    <div class="controls">
-                        <input type="text" id="inputEmail1" placeholder="Email">
-                        <input type="password" id="inputPassword1" placeholder="Password">
-                        <label class="checkbox">
-                            <input type="checkbox"> Remember me
+            <div class="control-group">
+                <div class="controls">
+                    <form action="/login/" method="POST">{% csrf_token %}
+                        <label>
+                            <input type="text" name="username" placeholder="Email">
+                            <input type="password" name="password" placeholder="Password">
                         </label>
                         <button type="submit" class="btn btn-primary pull-right">Log in</button>
-                    </div>
+                    </form>
                 </div>
-            </form>
+            </div>
         </div>
     </div>
 
-    <form action="/register/" method="POST">{% csrf_token %}
+    <form action="/register/" method="POST" name="register" id="register">{% csrf_token %}
         <div class="row">
             <div class="span4 offset4">
                 <fieldset>
                     <legend class="text-center">Project name</legend>
-                    <input type="text" id="project_name" class="span4">
+                    <input type="text" name="first_project_name" id="first_project_name" class="span4" required>
                 </fieldset>
             </div>
         </div>
@@ -74,8 +73,8 @@
                             <label class="radio">
                                 <input type="radio"
                                        name="radiogroup1"
-                                       id="radio1{{ forloop.counter }}"
-                                       value="option1{{ forloop.counter }}"
+                                       value="{{ item.id }}"
+                                       id="{{ item.id }}"
                                         {% if item.text == 'Not sure' %} checked {% endif %}
                                         >
                                 {{ item.text }}
@@ -85,7 +84,8 @@
                     {% if type1 == 'checkbox' %}
                         {% for item in objects1 %}
                             <label class="checkbox">
-                                <input type="checkbox" value="option1{{ forloop.counter }}"> {{ item.text }}
+                                <input type="checkbox" name="{{ question_title1 }}"
+                                       value="{{ item.id }}"> {{ item.text }}
                             </label>
                         {% endfor %}
                     {% endif %}
@@ -99,8 +99,8 @@
                             <label class="radio">
                                 <input type="radio"
                                        name="radiogroup2"
-                                       id="radio2{{ forloop.counter }}"
-                                       value="option2{{ forloop.counter }}"
+                                       value="{{ item.id }}"
+                                       id="{{ item.id }}"
                                         {% if item.text == 'Not sure' %} checked {% endif %}
                                         >
                                 {{ item.text }}
@@ -110,7 +110,8 @@
                     {% if type2 == 'checkbox' %}
                         {% for item in objects2 %}
                             <label class="checkbox">
-                                <input type="checkbox" value="option2{{ forloop.counter }}"> {{ item.text }}
+                                <input type="checkbox" name="{{ question_title2 }}"
+                                       value="{{ item.id }}"> {{ item.text }}
                             </label>
                         {% endfor %}
                     {% endif %}
@@ -128,8 +129,8 @@
                             <label class="radio">
                                 <input type="radio"
                                        name="radiogroup3"
-                                       id="radio3{{ forloop.counter }}"
-                                       value="option3{{ forloop.counter }}"
+                                       value="{{ item.id }}"
+                                       id="{{ item.id }}"
                                         {% if item.text == 'Not sure' %} checked {% endif %}
                                         >
                                 {{ item.text }}
@@ -139,7 +140,8 @@
                     {% if type3 == 'checkbox' %}
                         {% for item in objects3 %}
                             <label class="checkbox">
-                                <input type="checkbox" value="option3{{ forloop.counter }}"> {{ item.text }}
+                                <input type="checkbox" name="{{ question_title3 }}"
+                                       value="{{ item.id }}"> {{ item.text }}
                             </label>
                         {% endfor %}
                     {% endif %}
@@ -147,18 +149,56 @@
             </div>
             <div class="span3">
                 <legend>Registration data</legend>
-                <div class="control-group">
-                    <div class="controls">
-                        <input type="text" id="inputName" placeholder="Name">
-                        <input type="text" id="inputEmail" placeholder="Email">
-                        <input type="password" id="inputPassword" placeholder="Password">
-                        <input type="password" id="inputPasswordRetype" placeholder="Retype password">
-                        <label class="checkbox">
-                            <input type="checkbox"> Remember me
-                        </label>
-                        <button type="submit" class="btn btn-primary pull-right">Register</button>
+                {% comment %}<div class="control-group">
+                    <div class="controls">{% endcomment %}
+                {% if username_is_ok %}
+                    <input type="text" name="inputName" placeholder="Username" required>
+                {% else %}
+                    <div class="control-group error">
+                        <input type="text" name="inputName" placeholder="Username" value="{{ username }}"
+                               class="text-error" required>
+                        <span class="help-block text-error">This username already exists</span>
                     </div>
-                </div>
+                {% endif %}
+
+                <input type="text" name="inputFirst" placeholder="First name">
+                <input type="text" name="inputLast" placeholder="Last name">
+                <input type="email" name="inputEmail" placeholder="Email" required>
+                <input type="password" name="inputPassword" placeholder="Password" required>
+                <input type="password" name="inputPasswordRetype" placeholder="Retype password" required>
+                <label class="checkbox">
+                    <input type="checkbox"> Remember me
+                </label>
+                <button type="button" onclick="function checkPassword() {
+                            var form = document.forms['register'];
+                            var a = form.inputPassword.value;
+                            var b = form.inputPasswordRetype.value;
+                            if (!form.inputEmail.checkValidity()) {
+                                alert('Input correct email!');
+                                return;
+                            }
+                            if (!form.first_project_name.checkValidity()) {
+                                alert('Input name of your first project!');
+                                return;
+                            }
+                            if (!form.inputName.checkValidity()) {
+                                alert('Input your username!');
+                                return;
+                            }
+                            if (!form.inputPassword.checkValidity()) {
+                                alert('Input your password!');
+                                return;
+                            }
+                            if (a != b) {
+                                alert('Passwords didn\'t match!');
+                                return;
+                            }
+                            form.submit();
+                        }
+                        checkPassword()" class="btn btn-primary pull-right">Register
+                </button>
+                {% comment %}</div>
+                </div>{% endcomment %}
             </div>
         </div>
 
