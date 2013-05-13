@@ -1,0 +1,32 @@
+{% extends 'manager/base.html' %}
+{% load static %}
+
+{% block title %}Clients{% endblock %}
+
+{% block page_content %}
+    <div class="row">
+        <div class="span6 offset1">
+            <button class="btn btn-primary btn-large pull-right" type="button"
+                    onclick="window.open('/clients/','_self',false)">Recalculate
+            </button>
+            <table class="table table-striped table-hover">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Header</th>
+                    <th>Value</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for group in groups %}
+                    <tr>
+                        <td>{{ group.position_No }}</td>
+                        <td>{{ group.group_header }}</td>
+                        <td>{{ group.regression_coefficient }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

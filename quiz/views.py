@@ -152,6 +152,16 @@ def clients(request):
                               RequestContext(request))
 
 
+def analysis(request):
+    if not request.user.is_authenticated or not request.user.is_staff:
+        raise Http404()
+    groups = QuestionGroup.objects.all()
+    return render_to_response('manager/analysis.html',
+                              {'active_section': 'analysis',
+                               'groups': groups},
+                              RequestContext(request))
+
+
 def finish(request):
     if not request.user.is_authenticated():
         raise Http404()

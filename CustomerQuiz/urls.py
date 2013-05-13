@@ -22,6 +22,7 @@ urlpatterns = patterns('',
                        ('^contacts/$', contacts),
                        ('^clients/$', clients),
                        ('^submitted/$', submitted),
+                       ('^analysis/$', analysis),
                        # Examples:
                        # url(r'^$', 'CustomerQuiz.views.home', name='home'),
                        # url(r'^CustomerQuiz/', include('CustomerQuiz.foo.urls')),
