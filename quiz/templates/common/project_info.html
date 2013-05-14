@@ -30,7 +30,13 @@
                 </tbody>
             </table>
             <p class="lead text-center">
-                Submit project <b>"{{ project.name }}"</b> to manager?<br>
+                {% if project.status.name == 'New' and not is_staff %}
+                    Submit project <b>"{{ project.name }}"</b> to manager?<br>
+                {% elif not is_staff %}
+                    Project <b>"{{ project.name }}"</b> status: {{ project.status }}<br>
+                {% else %}
+                    Push project <b>"{{ project.name }}"</b> to next step?<br>
+                {% endif %}
                 <button class="btn btn-inverse btn-large" type="submit" form="projects"><i
                         class="icon-backward icon-white"></i> Later
                 </button>
@@ -43,8 +49,8 @@
                         type="submit" form="submit">{{ btn_next_text }} <i
                         class="icon-forward icon-white"></i></button>
             <form action="/projects/" id="projects" method="POST">{% csrf_token %}</form>
-            <form action="/quiz/" id="quiz" method="POST">{% csrf_token %}<input type="hidden" value="{{ project.id }}"
-                                                                                 name="pid"></form>
+            <form action="/quiz" id="quiz" method="POST">{% csrf_token %}<input type="hidden" value="{{ project.id }}"
+                                                                                name="pid"></form>
             <form action="{{ btn_next_page }}" id="submit" method="POST">{% csrf_token %}<input type="hidden"
                                                                                                 value="{{ project.id }}"
                                                                                                 name="pid"></form>

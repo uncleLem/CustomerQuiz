@@ -1,0 +1,36 @@
+{% extends 'common/base.html' %}
+{% load static %}
+
+{% block title %}My projects{% endblock %}
+
+{% block page_content %}
+    <div class="row">
+        <div class="span6 offset1">
+            <form action="/recalculate_finished/" method="POST" name="form{{ forloop.counter }}">{% csrf_token %}
+                <button class="btn btn-primary btn-large pull-right" type="submit">Recalculate</button>
+                <table class="table table-striped table-hover">
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th>Owner</th>
+                        <th>Project name</th>
+                        <th>Result</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for project in projects %}
+                        <tr>
+                            <td><label class="checkbox"><input type="checkbox" name="{{ project.id }}"
+                                                               id="{{ project.id }}" checked="true"></label></td>
+                            <td>{{ project.owner }}</td>
+                            <td>{{ project.name }}</td>
+                            <td>{{ project.real_result }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                <button class="btn btn-primary btn-large pull-right" type="submit">Recalculate</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

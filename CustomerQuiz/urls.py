@@ -26,6 +26,8 @@ urlpatterns = patterns('',
                        ('^started/$', started),
                        ('^pre_finished/$', pre_finished),
                        ('^finished/$', finished),
+                       ('^recalculate/$', recalculate),
+                       ('^recalculate_finished/$', recalculate_done),
                        # Examples:
                        # url(r'^$', 'CustomerQuiz.views.home', name='home'),
                        # url(r'^CustomerQuiz/', include('CustomerQuiz.foo.urls')),

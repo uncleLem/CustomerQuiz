@@ -5,6 +5,7 @@ from django.db import IntegrityError
 from django.http import Http404, HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.template.context import RequestContext
+from quiz.core import calculate
 
 from quiz.models import *
 
@@ -105,7 +106,7 @@ def my_projects(request):
                                    'is_staff': request.user.is_staff},
                                   RequestContext(request))
 
-    projects = Project.objects.all()
+    projects = Project.objects.all().order_by("status")
     return render_to_response('manager/all_projects.html',
                               {'projects': projects,
                                'active_section': 'projects',
@@ -180,7 +181,7 @@ def project_info(request):
     else:
         text = 'Finish'
         page = '/pre_finished/'
-    return render_to_response('client/project_info.html',
+    return render_to_response('common/project_info.html',
                               {'project': project,
                                'info': info,
                                'active_section': 'new',
@@ -200,10 +201,12 @@ def finish(request):
         info = getInfo(project)
     else:
         raise Http404()
-    return render_to_response('client/project_info.html',
+    return render_to_response('common/project_info.html',
                               {'project': project,
                                'info': info,
                                'active_section': 'new',
+                               'btn_next_text': 'Submit',
+                               'btn_next_page': '/submitted/',
                                'is_staff': request.user.is_staff},
                               RequestContext(request))
 
@@ -476,3 +479,32 @@ def saveAnswers(request, project, offset):
                         answer.save()
         except Question.DoesNotExist:
             print("can't find Question for id=" + str(request.POST['group']))
+
+
+def recalculate(request):
+    if not request.user.is_authenticated or not request.user.is_staff:
+        raise Http404()
+
+    stat = ProjectStatus.objects.get(name='Finished')
+    projects = Project.objects.filter(status=stat)
+
+    return render_to_response('manager/recalculate.html',
+                              {'active_section': 'analysis',
+                               'projects': projects,
+                               'is_staff': request.user.is_staff},
+                              RequestContext(request))
+
+
+def recalculate_done(request):
+    if not request.user.is_authenticated or not request.user.is_staff:
+        raise Http404()
+
+    all_p = Project.objects.all()
+    projects = []
+    for project in all_p:
+        if str(project.id) in request.POST:
+            projects.append(project)
+
+    calculate(projects)
+
+    return HttpResponseRedirect('/analysis/')
