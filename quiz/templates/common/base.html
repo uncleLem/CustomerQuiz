@@ -31,15 +31,29 @@
     <div class="row">
         <div class="span2 offset1">
             {% block left_column %}
-                <ul class="nav nav-stacked nav-tabs">
-                    <li class="active">
-                        <a href="#">blah-blah-blah</a>
-                    </li>
-                    <li><a href="#">Some awesome function</a></li>
-                    <li><a href="#"><i class="icon-star"></i> We have cool icons!</a></li>
-                    <li><a href="#">Some stuff to do</a></li>
-                    <li><a href="#">And smth more</a></li>
-                </ul>
+                {% if not is_staff %}
+                    <ul class="nav nav-stacked nav-tabs">
+                        <li {% if active_section == 'new' %} class="active"{% endif %}><a href="/new/"><i
+                                class="icon-plus"></i> New
+                            project</a></li>
+                        <li {% if active_section == 'projects' %} class="active"{% endif %}><a href="/projects/"><i
+                                class="icon-th-list"></i> My projects</a></li>
+                        <li {% if active_section == 'contacts' %} class="active"{% endif %}><a href="/contacts/"><i
+                                class="icon-envelope"></i> My
+                            Contacts</a></li>
+                        <li><a href="/logout/"><i class="icon-off"></i> Log out</a></li>
+                    </ul>
+                {% else %}
+                    <ul class="nav nav-stacked nav-tabs">
+                        <li {% if active_section == 'projects' %} class="active"{% endif %}><a href="/projects/"><i
+                                class="icon-th-list"></i> Projects</a></li>
+                        <li {% if active_section == 'contacts' %} class="active"{% endif %}><a href="/clients/"><i
+                                class="icon-user"></i> Clients</a></li>
+                        <li {% if active_section == 'analysis' %} class="active"{% endif %}><a href="/analysis/"><i
+                                class="icon-tasks"></i> Analysis</a></li>
+                        <li><a href="/logout/"><i class="icon-off"></i> Log out</a></li>
+                    </ul>
+                {% endif %}
             {% endblock %}
         </div>
         <div class="span6">

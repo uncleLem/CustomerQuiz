@@ -85,12 +85,14 @@ def question_sample(request, offset):
                                'answers': answers,
                                'project': project.name,
                                'next': next,
+                               'is_staff': request.user.is_staff,
                                'active_section': 'new'}, RequestContext(request))
 
 
 def new(request):
     return render_to_response('client/new_project.html',
-                              {'active_section': 'new'},
+                              {'active_section': 'new',
+                               'is_staff': request.user.is_staff},
                               RequestContext(request))
 
 
@@ -99,30 +101,15 @@ def my_projects(request):
         projects = Project.objects.filter(owner=request.user)
         return render_to_response('client/my_projects.html',
                                   {'projects': projects,
-                                   'active_section': 'projects'},
+                                   'active_section': 'projects',
+                                   'is_staff': request.user.is_staff},
                                   RequestContext(request))
 
     projects = Project.objects.all()
     return render_to_response('manager/all_projects.html',
                               {'projects': projects,
-                               'active_section': 'projects'},
-                              RequestContext(request))
-
-
-def project_info(request):
-    if 'pid' in request.GET:
-        id = request.GET['pid']
-        try:
-            project = Project.objects.get(owner=request.user, id=id)
-            info = getInfo(project)
-        except Project.DoesNotExist:
-            raise Http404()
-    else:
-        raise Http404()
-    return render_to_response('client/project_info.html',
-                              {'project': project,
-                               'info': info,
-                               'active_section': 'new'},
+                               'active_section': 'projects',
+                               'is_staff': request.user.is_staff},
                               RequestContext(request))
 
 
@@ -138,7 +125,8 @@ def contacts(request):
         contact.save()
     return render_to_response('client/contacts.html',
                               {'active_section': 'contacts',
-                               'value': contact.value},
+                               'value': contact.value,
+                               'is_staff': request.user.is_staff},
                               RequestContext(request))
 
 
@@ -148,7 +136,8 @@ def clients(request):
     contacts = Contacts.objects.all()
     return render_to_response('manager/clients.html',
                               {'active_section': 'contacts',
-                               'contacts': contacts},
+                               'contacts': contacts,
+                               'is_staff': request.user.is_staff},
                               RequestContext(request))
 
 
@@ -158,7 +147,46 @@ def analysis(request):
     groups = QuestionGroup.objects.all()
     return render_to_response('manager/analysis.html',
                               {'active_section': 'analysis',
-                               'groups': groups},
+                               'groups': groups,
+                               'is_staff': request.user.is_staff},
+                              RequestContext(request))
+
+
+def project_info(request):
+    if 'pid' in request.GET:
+        id = request.GET['pid']
+        try:
+            if request.user.is_staff:
+                project = Project.objects.get(id=id)
+            else:
+                project = Project.objects.get(owner=request.user, id=id)
+            info = getInfo(project)
+        except Project.DoesNotExist:
+            raise Http404()
+    else:
+        raise Http404()
+    if not request.user.is_staff:
+        text = 'Submit'
+        page = '/submitted/'
+    elif project.status.name == 'New':
+        text = 'Submit'
+        page = '/submitted/'
+    elif project.status.name == 'Submitted':
+        text = 'Start'
+        page = '/started/'
+    elif project.status.name == 'Started':
+        text = 'Finish'
+        page = '/pre_finished/'
+    else:
+        text = 'Finish'
+        page = '/pre_finished/'
+    return render_to_response('client/project_info.html',
+                              {'project': project,
+                               'info': info,
+                               'active_section': 'new',
+                               'btn_next_text': text,
+                               'btn_next_page': page,
+                               'is_staff': request.user.is_staff},
                               RequestContext(request))
 
 
@@ -175,11 +203,14 @@ def finish(request):
     return render_to_response('client/project_info.html',
                               {'project': project,
                                'info': info,
-                               'active_section': 'new'},
+                               'active_section': 'new',
+                               'is_staff': request.user.is_staff},
                               RequestContext(request))
 
 
 def submitted(request):
+    if not request.user.is_authenticated() and request.user.is_staff:
+        raise Http404()
     if 'pid' in request.POST:
         id = request.POST['pid']
         try:
@@ -189,9 +220,67 @@ def submitted(request):
             project.save()
         except Project.DoesNotExist:
             raise Http404()
-    return render_to_response('client/submitted.html',
+    return render_to_response('client/project_submitted.html',
                               {'project': project,
-                               'active_section': 'new'},
+                               'active_section': 'new',
+                               'is_staff': request.user.is_staff},
+                              RequestContext(request))
+
+
+def started(request):
+    if not request.user.is_authenticated() and request.user.is_staff:
+        raise Http404()
+    if 'pid' in request.POST:
+        id = request.POST['pid']
+        try:
+            project = Project.objects.get(id=id)
+            status = ProjectStatus.objects.get(name='Started')
+            project.status = status
+            project.save()
+        except Project.DoesNotExist:
+            raise Http404()
+    return render_to_response('manager/project_started.html',
+                              {'project': project,
+                               'active_section': 'new',
+                               'is_staff': request.user.is_staff},
+                              RequestContext(request))
+
+
+def pre_finished(request):
+    if not request.user.is_authenticated() and request.user.is_staff:
+        raise Http404()
+    if 'pid' in request.POST:
+        id = request.POST['pid']
+        try:
+            project = Project.objects.get(id=id)
+        except Project.DoesNotExist:
+            raise Http404()
+    return render_to_response('manager/project_pre_finished.html',
+                              {'project': project,
+                               'active_section': 'new',
+                               'is_staff': request.user.is_staff},
+                              RequestContext(request))
+
+
+def finished(request):
+    if not request.user.is_authenticated() and request.user.is_staff:
+        raise Http404()
+    if 'pid' in request.POST and 'value' in request.POST:
+        pid = request.POST['pid']
+        try:
+            project = Project.objects.get(id=pid)
+            status = ProjectStatus.objects.get(name='Finished')
+            project.status = status
+            project.real_result = float(request.POST['value'])
+            project.save()
+        except Project.DoesNotExist:
+            raise Http404()
+    else:
+        raise Http404()
+    return render_to_response('manager/project_finished.html',
+                              {'project': project,
+                               'active_section': 'new',
+                               'is_staff': request.user.is_staff},
                               RequestContext(request))
 
 

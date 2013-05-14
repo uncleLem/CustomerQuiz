@@ -1,4 +1,4 @@
-{% extends 'client/base.html' %}
+{% extends 'common/base.html' %}
 {% load static %}
 
 {% block title %}Info about "{{ project.name }}" project{% endblock %}
@@ -34,18 +34,20 @@
                 <button class="btn btn-inverse btn-large" type="submit" form="projects"><i
                         class="icon-backward icon-white"></i> Later
                 </button>
-                <button class="btn btn-info btn-large {% if project.status.name != 'New' %}disabled{% endif %}"
+                <button class="btn btn-info btn-large {% if project.status.name != 'New' and not is_staff %}disabled{% endif %}"
                         {% if project.status.name != 'New' %}disabled="disabled"{% endif %} type="submit" form="quiz"><i
                         class="icon-edit icon-white"></i> Edit
                 </button>
-                <button class="btn btn-success btn-large" type="submit" form="submit">Submit <i
+                <button class="btn btn-success btn-large {% if project.status.name == 'Finished' or project.status.name != 'New' and not is_staff %}disabled{% endif %}"
+                        {% if project.status.name == 'Finished' or project.status.name != 'New' and not is_staff %}disabled="disabled"{% endif %}
+                        type="submit" form="submit">{{ btn_next_text }} <i
                         class="icon-forward icon-white"></i></button>
             <form action="/projects/" id="projects" method="POST">{% csrf_token %}</form>
             <form action="/quiz/" id="quiz" method="POST">{% csrf_token %}<input type="hidden" value="{{ project.id }}"
                                                                                  name="pid"></form>
-            <form action="/submitted/" id="submit" method="POST">{% csrf_token %}<input type="hidden"
-                                                                                        value="{{ project.id }}"
-                                                                                        name="pid"></form>
+            <form action="{{ btn_next_page }}" id="submit" method="POST">{% csrf_token %}<input type="hidden"
+                                                                                                value="{{ project.id }}"
+                                                                                                name="pid"></form>
             </p>
         </div>
     </div>

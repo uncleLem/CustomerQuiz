@@ -1,0 +1,18 @@
+{% extends 'common/base.html' %}
+{% load static %}
+
+{% block title %}Project finished{% endblock %}
+
+{% block page_content %}
+    <div class="row">
+        <div class="span6 offset1">
+            <p class="lead">Project is done. Elapsed time:</p>
+            <input type="number" min="0" name="value" id="value" form="submit">
+        </div>
+    </div>
+    <button class="btn btn-success btn-large" type="submit" form="submit">Save and finish <i
+            class="icon-forward icon-white"></i></button>
+    <form action="/finished/" id="submit" method="POST">{% csrf_token %}<input type="hidden"
+                                                                               value="{{ project.id }}"
+                                                                               name="pid"></form>
+{% endblock %}
