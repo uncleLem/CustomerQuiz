@@ -35,13 +35,15 @@
                 {% elif not is_staff %}
                     Project <b>"{{ project.name }}"</b> status: {{ project.status }}<br>
                 {% else %}
+                    Time estimation: {{ evaluation }}<br>
                     Push project <b>"{{ project.name }}"</b> to next step?<br>
                 {% endif %}
                 <button class="btn btn-inverse btn-large" type="submit" form="projects"><i
                         class="icon-backward icon-white"></i> Later
                 </button>
                 <button class="btn btn-info btn-large {% if project.status.name != 'New' and not is_staff %}disabled{% endif %}"
-                        {% if project.status.name != 'New' %}disabled="disabled"{% endif %} type="submit" form="quiz"><i
+                        {% if project.status.name != 'New' and not is_staff %}disabled="disabled"{% endif %}
+                        type="submit" form="quiz"><i
                         class="icon-edit icon-white"></i> Edit
                 </button>
                 <button class="btn btn-success btn-large {% if project.status.name == 'Finished' or project.status.name != 'New' and not is_staff %}disabled{% endif %}"
@@ -49,8 +51,8 @@
                         type="submit" form="submit">{{ btn_next_text }} <i
                         class="icon-forward icon-white"></i></button>
             <form action="/projects/" id="projects" method="POST">{% csrf_token %}</form>
-            <form action="/quiz" id="quiz" method="POST">{% csrf_token %}<input type="hidden" value="{{ project.id }}"
-                                                                                name="pid"></form>
+            <form action="/quiz/" id="quiz" method="POST">{% csrf_token %}<input type="hidden" value="{{ project.id }}"
+                                                                                 name="pid"></form>
             <form action="{{ btn_next_page }}" id="submit" method="POST">{% csrf_token %}<input type="hidden"
                                                                                                 value="{{ project.id }}"
                                                                                                 name="pid"></form>

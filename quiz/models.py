@@ -39,6 +39,7 @@ class QuestionGroup(models.Model):
     group_header = models.CharField(max_length=300)
     group_type = models.ForeignKey(GroupType)
     regression_coefficient = models.FloatField()
+    included = models.IntegerField()
 
     def __unicode__(self):
         return 'Group #%d: %s' % (self.position_No, self.group_header)

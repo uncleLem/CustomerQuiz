@@ -5,7 +5,7 @@ from django.db import IntegrityError
 from django.http import Http404, HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.template.context import RequestContext
-from quiz.core import calculate
+from quiz.core import calculate, evaluate
 
 from quiz.models import *
 
@@ -21,7 +21,7 @@ def default_question_sample(request):
 def question_sample(request, offset):
     if not request.user.is_authenticated():
         raise Http404()
-    max = QuestionGroup.objects.all().__len__()
+    max = QuestionGroup.objects.filter(position_No__gt=0).__len__()
     questions_list = []
     i = 1
     while i <= max:
@@ -45,7 +45,10 @@ def question_sample(request, offset):
         request.session['project'] = project
     elif 'pid' in request.POST:
         try:
-            project = Project.objects.get(id=request.POST['pid'], owner=request.user)
+            if request.user.is_staff:
+                project = Project.objects.get(id=request.POST['pid'])
+            else:
+                project = Project.objects.get(id=request.POST['pid'], owner=request.user)
             request.session['project'] = project
         except Project.DoesNotExist:
             raise Http404()
@@ -166,6 +169,10 @@ def project_info(request):
             raise Http404()
     else:
         raise Http404()
+    if request.user.is_staff:
+        evaluation = evaluate(project)
+    else:
+        evaluation = 0
     if not request.user.is_staff:
         text = 'Submit'
         page = '/submitted/'
@@ -187,6 +194,7 @@ def project_info(request):
                                'active_section': 'new',
                                'btn_next_text': text,
                                'btn_next_page': page,
+                               'evaluation': evaluation,
                                'is_staff': request.user.is_staff},
                               RequestContext(request))
 
@@ -194,7 +202,7 @@ def project_info(request):
 def finish(request):
     if not request.user.is_authenticated():
         raise Http404()
-    offset = QuestionGroup.objects.all().__len__()
+    offset = QuestionGroup.objects.filter(position_No__gt=0).__len__()
     if 'project' in request.session:
         project = request.session['project']
         saveAnswers(request=request, project=project, offset=offset)
@@ -288,7 +296,7 @@ def finished(request):
 
 
 def getInfo(project):
-    groups = QuestionGroup.objects.all()
+    groups = QuestionGroup.objects.filter(position_No__gt=0)
     info = []
     for group in groups:
         objects = Question.objects.filter(id_question_group=group)
@@ -505,6 +513,34 @@ def recalculate_done(request):
         if str(project.id) in request.POST:
             projects.append(project)
 
-    calculate(projects)
+    groups = QuestionGroup.objects.filter(position_No__gt=0)
+    for group in groups:
+        group.included = 1
+        group.save()
+    old_results = calculate(projects)
+    flag = old_results['group'] is not None
+    while flag:
+        old_results['group'].included = 0
+        old_results['group'].save()
+        new_results = calculate(projects)
+        if new_results['error'] > old_results['error'] or new_results['group'] is None:
+            old_results['group'].included = 1
+            old_results['group'].save()
+            save_regression(old_results)
+            flag = False
+        else:
+            old_results = new_results
 
     return HttpResponseRedirect('/analysis/')
+
+
+def save_regression(results):
+    all_groups = QuestionGroup.objects.all()
+    for group in all_groups:
+        group.regression_coefficient = 0
+        group.save()
+    included_groups = QuestionGroup.objects.filter(included=1)
+    for i in range(0, included_groups.__len__(), 1):
+        included_groups[i].regression_coefficient = results['regression'][i]
+        included_groups[i].save()
+    return results
