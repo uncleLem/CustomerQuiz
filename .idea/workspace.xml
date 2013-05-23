@@ -4,8 +4,6 @@
     <list default="true" id="b4bf086f-35b9-4add-95e3-2ab91ff782df" name="Default" comment="">
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/final.sql" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/quiz/templates/common/project_info.html" afterPath="$PROJECT_DIR$/quiz/templates/common/project_info.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/quiz/views.py" afterPath="$PROJECT_DIR$/quiz/views.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="CustomerQuiz.iws" />
@@ -26,7 +24,7 @@
     <file path="/helper.py" changelist="b4bf086f-35b9-4add-95e3-2ab91ff782df" time="1364971870096" ignored="false" />
     <file path="/fragment.py" changelist="b4bf086f-35b9-4add-95e3-2ab91ff782df" time="1368995613082" ignored="false" />
     <file path="/welcome.html" changelist="b4bf086f-35b9-4add-95e3-2ab91ff782df" time="1369341993586" ignored="false" />
-    <file path="/Dummy.txt" changelist="b4bf086f-35b9-4add-95e3-2ab91ff782df" time="1369343404719" ignored="false" />
+    <file path="/Dummy.txt" changelist="b4bf086f-35b9-4add-95e3-2ab91ff782df" time="1369345591785" ignored="false" />
     <file path="/a.dummy" changelist="b4bf086f-35b9-4add-95e3-2ab91ff782df" time="1369343424183" ignored="false" />
     <file path="$APPLICATION_HOME_DIR$/lib/pycharm.jar!/standardSchemas/html5/xhtml5.xsd" changelist="b4bf086f-35b9-4add-95e3-2ab91ff782df" time="1366662551939" ignored="false" />
     <file path="$APPLICATION_HOME_DIR$/lib/pycharm.jar!/standardSchemas/XMLSchema.xsd" changelist="b4bf086f-35b9-4add-95e3-2ab91ff782df" time="1366662551939" ignored="false" />
@@ -86,7 +84,7 @@
       <file leaf-file-name="views.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/quiz/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="205" column="55" selection-start="7856" selection-end="7856" vertical-scroll-proportion="0.7154583">
+            <state line="205" column="55" selection-start="7870" selection-end="7870" vertical-scroll-proportion="0.7154583">
               <folding>
                 <element signature="e#50#81#0" expanded="true" />
               </folding>
@@ -106,7 +104,7 @@
       <file leaf-file-name="project_info.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/quiz/templates/common/project_info.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="49" column="47" selection-start="1895" selection-end="1895" vertical-scroll-proportion="-25.956522">
+            <state line="49" column="47" selection-start="1895" selection-end="1895" vertical-scroll-proportion="2.2173913">
               <folding />
             </state>
           </provider>
@@ -189,8 +187,8 @@
         <option value="$PROJECT_DIR$/quiz/templates/manager/project_started.html" />
         <option value="$PROJECT_DIR$/quiz/templates/manager/recalculate.html" />
         <option value="$PROJECT_DIR$/quiz/admin.py" />
-        <option value="$PROJECT_DIR$/quiz/views.py" />
         <option value="$PROJECT_DIR$/quiz/templates/common/project_info.html" />
+        <option value="$PROJECT_DIR$/quiz/views.py" />
       </list>
     </option>
   </component>
@@ -602,7 +600,11 @@
       <created>1369343407746</created>
       <updated>1369343407746</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="evaluation table">
+      <created>1369345600991</created>
+      <updated>1369345600991</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -672,7 +674,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="bugfix" />
+    <option name="LAST_COMMIT_MESSAGE" value="evaluation table" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -698,6 +700,7 @@
     <MESSAGE value="added &quot;recalculate&quot; page&#10;refactoring" />
     <MESSAGE value="localization" />
     <MESSAGE value="bugfix" />
+    <MESSAGE value="evaluation table" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -819,14 +822,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/quiz/templates/common/project_info.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="47" selection-start="1895" selection-end="1895" vertical-scroll-proportion="-25.956522">
+        <state line="49" column="47" selection-start="1895" selection-end="1895" vertical-scroll-proportion="2.2173913">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/quiz/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="205" column="55" selection-start="7856" selection-end="7856" vertical-scroll-proportion="0.7154583">
+        <state line="205" column="55" selection-start="7870" selection-end="7870" vertical-scroll-proportion="0.7154583">
           <folding>
             <element signature="e#50#81#0" expanded="true" />
           </folding>
