@@ -37,7 +37,7 @@ def question_sample(request, offset):
         raise Http404()
 
     if 'project_name' in request.POST:
-        project = Project(name=str(request.POST['project_name']),
+        project = Project(name=request.POST['project_name'],
                           owner=request.user,
                           status=ProjectStatus.objects.get(name='New'),
                           real_result=0)
@@ -170,7 +170,7 @@ def project_info(request):
     else:
         raise Http404()
     if request.user.is_staff:
-        evaluation = evaluate(project)
+        evaluation = int(evaluate(project))
     else:
         evaluation = 0
     if not request.user.is_staff:
@@ -314,7 +314,7 @@ def getInfo(project):
                 else:
                     answer = Answer.objects.get(project=project, question=q)
                     if not (answer.value == '0' or answer.value == ''):
-                        answers.append(str(q.text))
+                        answers.append(q.text)
             except Answer.DoesNotExist:
                 print 'show must go on'
         info.append((group.group_header, answers))
@@ -362,6 +362,8 @@ def register(request):
         user.last_name = request.POST['inputLast']
         user.is_staff = False
         user.save()
+        contacts = Contacts(user=user, value='')
+        contacts.save()
         user = auth.authenticate(username=user.username, password=request.POST['inputPassword'])
         if user is not None and user.is_active:
             # Правильный пароль и пользователь "активен"
