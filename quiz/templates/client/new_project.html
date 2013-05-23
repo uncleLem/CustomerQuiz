@@ -1,7 +1,7 @@
 {% extends 'common/base.html' %}
 {% load static %}
 
-{% block title %}New project{% endblock %}
+{% block title %}Новый проект{% endblock %}
 
 {% block page_content %}
     <div class="row" xmlns="http://www.w3.org/1999/html">
@@ -24,12 +24,12 @@
         <form action="/quiz/" method="POST">{% csrf_token %}
             <div class="span4 offset2">
                 <fieldset>
-                    <legend class="text-center">Project name</legend>
+                    <legend class="text-center">Название проекта</legend>
                     <input type="text" name="project_name" class="span4" required>
                 </fieldset>
             </div>
             <div class="span1 offset6">
-                <button type="submit" class="btn btn-primary">Proceed</button>
+                <button type="submit" class="btn btn-primary">Далее</button>
             </div>
         </form>
     </div>

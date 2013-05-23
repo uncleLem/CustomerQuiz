@@ -34,24 +34,22 @@
                 {% if not is_staff %}
                     <ul class="nav nav-stacked nav-tabs">
                         <li {% if active_section == 'new' %} class="active"{% endif %}><a href="/new/"><i
-                                class="icon-plus"></i> New
-                            project</a></li>
+                                class="icon-plus"></i> Новый проект</a></li>
                         <li {% if active_section == 'projects' %} class="active"{% endif %}><a href="/projects/"><i
-                                class="icon-th-list"></i> My projects</a></li>
+                                class="icon-th-list"></i> Мои проекты</a></li>
                         <li {% if active_section == 'contacts' %} class="active"{% endif %}><a href="/contacts/"><i
-                                class="icon-envelope"></i> My
-                            Contacts</a></li>
-                        <li><a href="/logout/"><i class="icon-off"></i> Log out</a></li>
+                                class="icon-envelope"></i> Мои контакты</a></li>
+                        <li><a href="/logout/"><i class="icon-off"></i> Выйти</a></li>
                     </ul>
                 {% else %}
                     <ul class="nav nav-stacked nav-tabs">
                         <li {% if active_section == 'projects' %} class="active"{% endif %}><a href="/projects/"><i
-                                class="icon-th-list"></i> Projects</a></li>
+                                class="icon-th-list"></i> Проекты</a></li>
                         <li {% if active_section == 'contacts' %} class="active"{% endif %}><a href="/clients/"><i
-                                class="icon-user"></i> Clients</a></li>
+                                class="icon-user"></i> Клиеннты</a></li>
                         <li {% if active_section == 'analysis' %} class="active"{% endif %}><a href="/analysis/"><i
-                                class="icon-tasks"></i> Analysis</a></li>
-                        <li><a href="/logout/"><i class="icon-off"></i> Log out</a></li>
+                                class="icon-tasks"></i> Аналитика</a></li>
+                        <li><a href="/logout/"><i class="icon-off"></i> Выйти</a></li>
                     </ul>
                 {% endif %}
             {% endblock %}

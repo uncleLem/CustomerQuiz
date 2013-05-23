@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>{% block title %}Default title{% endblock %} - Customer Quiz</title>
+    <title>{% block title %}Добро пожаловать!{% endblock %} - Customer Quiz</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -29,17 +29,17 @@
 <div class="container">
     <div class="row">
         <div class="span5 offset2">
-            <h2 class="text-info">New user?</h2>
+            <h2 class="text-info">Новый пользователь?</h2>
 
-            <p class="lead">Join us! </p>
+            <p class="lead">Присоединяйтесь! </p>
 
-            <p class="lead">Answer following questions, fill registration data and press "Register"</p>
+            <p class="lead">Ответьте на вопросы, запролните регистрационные данные и нажмите "Зарегистрироваться"</p>
             <br/>
         </div>
         <div class="span3">
-            <h2 class="text-info">Returning user?</h2>
+            <h2 class="text-info">Уже работали с нами?</h2>
 
-            <p class="muted">Please, introduce yourself:</p>
+            <p class="muted">Представьтесь, пожалуйста:</p>
 
             <div class="control-group">
                 <div class="controls">
@@ -59,7 +59,7 @@
         <div class="row">
             <div class="span4 offset4">
                 <fieldset>
-                    <legend class="text-center">Project name</legend>
+                    <legend class="text-center">Название проекта</legend>
                     <input type="text" name="first_project_name" id="first_project_name" class="span4" required>
                 </fieldset>
             </div>
@@ -148,7 +148,7 @@
                 </fieldset>
             </div>
             <div class="span3">
-                <legend>Registration data</legend>
+                <legend>Регистрационные данные</legend>
                 {% comment %}<div class="control-group">
                     <div class="controls">{% endcomment %}
                 {% if username_is_ok %}
@@ -157,7 +157,7 @@
                     <div class="control-group error">
                         <input type="text" name="inputName" placeholder="Username" value="{{ username }}"
                                class="text-error" required>
-                        <span class="help-block text-error">This username already exists</span>
+                        <span class="help-block text-error">Такой пользователь уже существует</span>
                     </div>
                 {% endif %}
 
@@ -166,9 +166,6 @@
                 <input type="email" name="inputEmail" placeholder="Email" required>
                 <input type="password" name="inputPassword" placeholder="Password" required>
                 <input type="password" name="inputPasswordRetype" placeholder="Retype password" required>
-                <label class="checkbox">
-                    <input type="checkbox"> Remember me
-                </label>
                 <button type="button" onclick="function checkPassword() {
                             var form = document.forms['register'];
                             var a = form.inputPassword.value;
@@ -195,7 +192,7 @@
                             }
                             form.submit();
                         }
-                        checkPassword()" class="btn btn-primary pull-right">Register
+                        checkPassword()" class="btn btn-primary pull-right">Зарегистрироваться
                 </button>
                 {% comment %}</div>
                 </div>{% endcomment %}

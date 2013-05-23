@@ -1,19 +1,19 @@
 {% extends 'common/base.html' %}
 {% load static %}
 
-{% block title %}Info about "{{ project.name }}" project{% endblock %}
+{% block title %}Информация о проекте "{{ project.name }}"{% endblock %}
 
 {% block page_content %}
     <div class="row">
         <div class="span6 offset1">
             <p class="lead">
-                Project <b>"{{ project.name }}"</b>:
+                Проект <b>"{{ project.name }}"</b>:
             </p>
             <table class="table table-condensed table-bordered table-hover">
                 <thead>
                 <tr>
-                    <th>Option</th>
-                    <th>Your choice</th>
+                    <th>Категория</th>
+                    <th>Выбрано</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -31,20 +31,20 @@
             </table>
             <p class="lead text-center">
                 {% if project.status.name == 'New' and not is_staff %}
-                    Submit project <b>"{{ project.name }}"</b> to manager?<br>
+                    Отправить проект <b>"{{ project.name }}"</b> менеджеру?<br>
                 {% elif not is_staff %}
-                    Project <b>"{{ project.name }}"</b> status: {{ project.status }}<br>
+                    Статус проекта <b>"{{ project.name }}"</b>: {{ project.status }}<br>
                 {% else %}
-                    Time estimation: {{ evaluation }}<br>
-                    Push project <b>"{{ project.name }}"</b> to next step?<br>
+                    Оценка времени: <br>{{ evaluation }} человеко-часов<br>
+                    Отправить <b>"{{ project.name }}"</b> на следующий этап?<br>
                 {% endif %}
                 <button class="btn btn-inverse btn-large" type="submit" form="projects"><i
-                        class="icon-backward icon-white"></i> Later
+                        class="icon-backward icon-white"></i> Позже
                 </button>
                 <button class="btn btn-info btn-large {% if project.status.name != 'New' and not is_staff %}disabled{% endif %}"
                         {% if project.status.name != 'New' and not is_staff %}disabled="disabled"{% endif %}
                         type="submit" form="quiz"><i
-                        class="icon-edit icon-white"></i> Edit
+                        class="icon-edit icon-white"></i> Редактировать
                 </button>
                 <button class="btn btn-success btn-large {% if project.status.name == 'Finished' or project.status.name != 'New' and not is_staff %}disabled{% endif %}"
                         {% if project.status.name == 'Finished' or project.status.name != 'New' and not is_staff %}disabled="disabled"{% endif %}

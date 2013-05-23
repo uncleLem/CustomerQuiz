@@ -4,9 +4,10 @@ from django.db import models
 
 class ProjectStatus(models.Model):
     name = models.CharField(max_length=100)  # new -> submitted -> started -> finished
+    readable = models.CharField(max_length=100)
 
     def __unicode__(self):
-        return self.name
+        return self.readable
 
 
 class Contacts(models.Model):

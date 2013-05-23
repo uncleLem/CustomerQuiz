@@ -174,19 +174,19 @@ def project_info(request):
     else:
         evaluation = 0
     if not request.user.is_staff:
-        text = 'Submit'
+        text = 'Отправить'
         page = '/submitted/'
     elif project.status.name == 'New':
-        text = 'Submit'
+        text = 'Отправить'
         page = '/submitted/'
     elif project.status.name == 'Submitted':
-        text = 'Start'
+        text = 'Начать'
         page = '/started/'
     elif project.status.name == 'Started':
-        text = 'Finish'
+        text = 'Окончить'
         page = '/pre_finished/'
     else:
-        text = 'Finish'
+        text = 'Окончить'
         page = '/pre_finished/'
     return render_to_response('common/project_info.html',
                               {'project': project,
@@ -213,7 +213,7 @@ def finish(request):
                               {'project': project,
                                'info': info,
                                'active_section': 'new',
-                               'btn_next_text': 'Submit',
+                               'btn_next_text': 'Отправить',
                                'btn_next_page': '/submitted/',
                                'is_staff': request.user.is_staff},
                               RequestContext(request))
@@ -250,6 +250,8 @@ def started(request):
             project.save()
         except Project.DoesNotExist:
             raise Http404()
+    else:
+        raise Http404()
     return render_to_response('manager/project_started.html',
                               {'project': project,
                                'active_section': 'new',
@@ -266,6 +268,8 @@ def pre_finished(request):
             project = Project.objects.get(id=id)
         except Project.DoesNotExist:
             raise Http404()
+    else:
+        raise Http404()
     return render_to_response('manager/project_pre_finished.html',
                               {'project': project,
                                'active_section': 'new',
