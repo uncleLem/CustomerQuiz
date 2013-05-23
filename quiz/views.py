@@ -195,6 +195,15 @@ def project_info(request):
                                'btn_next_text': text,
                                'btn_next_page': page,
                                'evaluation': evaluation,
+                               'evalh1': evaluation,
+                               'evalh2': "%.f" % float(evaluation / 2.),
+                               'evalh3': "%.f" % float(evaluation / 3.),
+                               'evald1': "%.f" % float(evaluation / 8),
+                               'evald2': "%.f" % float(evaluation / 16),
+                               'evald3': "%.f" % float(evaluation / 24),
+                               'evalw1': "%.f" % float(evaluation / 40.),
+                               'evalw2': "%.f" % float(evaluation / 80.),
+                               'evalw3': "%.f" % float(evaluation / 120.),
                                'is_staff': request.user.is_staff},
                               RequestContext(request))
 

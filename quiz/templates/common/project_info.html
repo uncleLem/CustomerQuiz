@@ -35,8 +35,39 @@
                 {% elif not is_staff %}
                     Статус проекта <b>"{{ project.name }}"</b>: {{ project.status }}<br>
                 {% else %}
-                    Оценка времени: <br>{{ evaluation }} человеко-часов<br>
-                    Отправить <b>"{{ project.name }}"</b> на следующий этап?<br>
+                    Оценка времени: <br>{{ evaluation }} человеко-часов
+                    <table class="table table-condensed table-bordered">
+                        <thead>
+                        <tr>
+                            <th></th>
+                            <th>1 человек</th>
+                            <th>2 человека</th>
+                            <th>3 человека</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td><b>Часы</b></td>
+                            <td>{{ evaluation }}</td>
+                            <td>{{ evalh2 }}</td>
+                            <td>{{ evalh3 }}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Дни</b></td>
+                            <td>{{ evald1 }}</td>
+                            <td>{{ evald2 }}</td>
+                            <td>{{ evald3 }}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Недели</b></td>
+                            <td>{{ evalw1 }}</td>
+                            <td>{{ evalw2 }}</td>
+                            <td>{{ evalw3 }}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    </p>
+                    <p class="lead text-center">Отправить <b>"{{ project.name }}"</b> на следующий этап?<br>
                 {% endif %}
                 <button class="btn btn-inverse btn-large" type="submit" form="projects"><i
                         class="icon-backward icon-white"></i> Позже
@@ -50,6 +81,7 @@
                         {% if project.status.name == 'Finished' or project.status.name != 'New' and not is_staff %}disabled="disabled"{% endif %}
                         type="submit" form="submit">{{ btn_next_text }} <i
                         class="icon-forward icon-white"></i></button>
+
             <form action="/projects/" id="projects" method="POST">{% csrf_token %}</form>
             <form action="/quiz/" id="quiz" method="POST">{% csrf_token %}<input type="hidden" value="{{ project.id }}"
                                                                                  name="pid"></form>
