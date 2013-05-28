@@ -57,7 +57,7 @@
                     <legend>{{ question_title }}</legend>
                     {% if type == 'enum' %}
                         <button form="form" type="button" onclick="CreateFormElement()" class="btn pull-right"><i
-                                class="icon-plus"></i> Add
+                                class="icon-plus"></i> Добавить
                         </button><br><br>{% endif %}
 
                     {% if type == 'radio' %}
@@ -100,8 +100,8 @@
             </div>
         {% endif %}{% endcomment %}
         <div class="row">
-            <div class="offset5">
-                <button form="form" type="submit" class="btn btn-primary">Далее <i
+            <div class="span4 offset2">
+                <button form="form" type="submit" class="btn btn-primary pull-right">Далее <i
                         class="icon-arrow-right icon-white"></i>
                 </button>
             </div>

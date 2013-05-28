@@ -191,7 +191,7 @@ def project_info(request):
     return render_to_response('common/project_info.html',
                               {'project': project,
                                'info': info,
-                               'active_section': 'new',
+                               'active_section': 'projects',
                                'btn_next_text': text,
                                'btn_next_page': page,
                                'evaluation': evaluation,

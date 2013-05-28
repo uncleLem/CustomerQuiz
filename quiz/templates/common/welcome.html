@@ -45,8 +45,8 @@
                 <div class="controls">
                     <form action="/login/" method="POST">{% csrf_token %}
                         <label>
-                            <input type="text" name="username" placeholder="Email">
-                            <input type="password" name="password" placeholder="Password">
+                            <input type="text" name="username" placeholder="Логин">
+                            <input type="password" name="password" placeholder="Пароль">
                         </label>
                         <button type="submit" class="btn btn-primary pull-right">Log in</button>
                     </form>
@@ -152,20 +152,20 @@
                 {% comment %}<div class="control-group">
                     <div class="controls">{% endcomment %}
                 {% if username_is_ok %}
-                    <input type="text" name="inputName" placeholder="Username" required>
+                    <input type="text" name="inputName" placeholder="Логин" required>
                 {% else %}
                     <div class="control-group error">
-                        <input type="text" name="inputName" placeholder="Username" value="{{ username }}"
+                        <input type="text" name="inputName" placeholder="Логин" value="{{ username }}"
                                class="text-error" required>
                         <span class="help-block text-error">Такой пользователь уже существует</span>
                     </div>
                 {% endif %}
 
-                <input type="text" name="inputFirst" placeholder="First name">
-                <input type="text" name="inputLast" placeholder="Last name">
+                <input type="text" name="inputFirst" placeholder="Имя">
+                <input type="text" name="inputLast" placeholder="Фамилия">
                 <input type="email" name="inputEmail" placeholder="Email" required>
-                <input type="password" name="inputPassword" placeholder="Password" required>
-                <input type="password" name="inputPasswordRetype" placeholder="Retype password" required>
+                <input type="password" name="inputPassword" placeholder="Пароль" required>
+                <input type="password" name="inputPasswordRetype" placeholder="Повторите пароль" required>
                 <button type="button" onclick="function checkPassword() {
                             var form = document.forms['register'];
                             var a = form.inputPassword.value;
