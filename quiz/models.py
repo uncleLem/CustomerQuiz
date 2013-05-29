@@ -57,7 +57,7 @@ class Question(models.Model):
     value = models.FloatField()
 
     def __unicode__(self):
-        return '%s: %s [%s]' % (self.id_question_group, self.text, self.value)
+        return u'%s: %s [%s]' % (self.id_question_group, self.text, self.value)
 
     class Meta:
         ordering = ["id_question_group"]

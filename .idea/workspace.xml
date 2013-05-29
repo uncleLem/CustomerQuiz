@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b4bf086f-35b9-4add-95e3-2ab91ff782df" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/quiz/templates/manager/all_projects.html" afterPath="$PROJECT_DIR$/quiz/templates/manager/all_projects.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/quiz/models.py" afterPath="$PROJECT_DIR$/quiz/models.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -24,7 +23,7 @@
     <file path="/helper.py" changelist="b4bf086f-35b9-4add-95e3-2ab91ff782df" time="1364971870096" ignored="false" />
     <file path="/fragment.py" changelist="b4bf086f-35b9-4add-95e3-2ab91ff782df" time="1369829177968" ignored="false" />
     <file path="/welcome.html" changelist="b4bf086f-35b9-4add-95e3-2ab91ff782df" time="1369583370524" ignored="false" />
-    <file path="/Dummy.txt" changelist="b4bf086f-35b9-4add-95e3-2ab91ff782df" time="1369829402793" ignored="false" />
+    <file path="/Dummy.txt" changelist="b4bf086f-35b9-4add-95e3-2ab91ff782df" time="1369829436169" ignored="false" />
     <file path="/a.dummy" changelist="b4bf086f-35b9-4add-95e3-2ab91ff782df" time="1369828856704" ignored="false" />
     <file path="$APPLICATION_HOME_DIR$/lib/pycharm.jar!/standardSchemas/html5/xhtml5.xsd" changelist="b4bf086f-35b9-4add-95e3-2ab91ff782df" time="1366662551939" ignored="false" />
     <file path="$APPLICATION_HOME_DIR$/lib/pycharm.jar!/standardSchemas/XMLSchema.xsd" changelist="b4bf086f-35b9-4add-95e3-2ab91ff782df" time="1366662551939" ignored="false" />
@@ -101,7 +100,7 @@
       <file leaf-file-name="all_projects.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/quiz/templates/manager/all_projects.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="25" selection-start="164" selection-end="164" vertical-scroll-proportion="-4.2608695">
+            <state line="7" column="25" selection-start="164" selection-end="164" vertical-scroll-proportion="2.2173913">
               <folding />
             </state>
           </provider>
@@ -609,7 +608,11 @@
       <created>1369829411898</created>
       <updated>1369829411898</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="small redesign">
+      <created>1369829438157</created>
+      <updated>1369829438157</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -679,7 +682,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="admin localization;" />
+    <option name="LAST_COMMIT_MESSAGE" value="small redesign" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -709,6 +712,7 @@
     <MESSAGE value="sql backup" />
     <MESSAGE value="localization update" />
     <MESSAGE value="admin localization;" />
+    <MESSAGE value="small redesign" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -825,7 +829,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/quiz/templates/manager/all_projects.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="25" selection-start="164" selection-end="164" vertical-scroll-proportion="-4.2608695">
+        <state line="7" column="25" selection-start="164" selection-end="164" vertical-scroll-proportion="2.2173913">
           <folding />
         </state>
       </provider>
