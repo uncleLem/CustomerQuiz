@@ -4,7 +4,6 @@
     <list default="true" id="b4bf086f-35b9-4add-95e3-2ab91ff782df" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/quiz/templates/manager/all_projects.html" afterPath="$PROJECT_DIR$/quiz/templates/manager/all_projects.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/quiz/models.py" afterPath="$PROJECT_DIR$/quiz/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CustomerQuiz/settings.py" afterPath="$PROJECT_DIR$/CustomerQuiz/settings.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="CustomerQuiz.iws" />
@@ -25,7 +24,7 @@
     <file path="/helper.py" changelist="b4bf086f-35b9-4add-95e3-2ab91ff782df" time="1364971870096" ignored="false" />
     <file path="/fragment.py" changelist="b4bf086f-35b9-4add-95e3-2ab91ff782df" time="1369829177968" ignored="false" />
     <file path="/welcome.html" changelist="b4bf086f-35b9-4add-95e3-2ab91ff782df" time="1369583370524" ignored="false" />
-    <file path="/Dummy.txt" changelist="b4bf086f-35b9-4add-95e3-2ab91ff782df" time="1369826723958" ignored="false" />
+    <file path="/Dummy.txt" changelist="b4bf086f-35b9-4add-95e3-2ab91ff782df" time="1369829402793" ignored="false" />
     <file path="/a.dummy" changelist="b4bf086f-35b9-4add-95e3-2ab91ff782df" time="1369828856704" ignored="false" />
     <file path="$APPLICATION_HOME_DIR$/lib/pycharm.jar!/standardSchemas/html5/xhtml5.xsd" changelist="b4bf086f-35b9-4add-95e3-2ab91ff782df" time="1366662551939" ignored="false" />
     <file path="$APPLICATION_HOME_DIR$/lib/pycharm.jar!/standardSchemas/XMLSchema.xsd" changelist="b4bf086f-35b9-4add-95e3-2ab91ff782df" time="1366662551939" ignored="false" />
@@ -111,7 +110,7 @@
       <file leaf-file-name="models.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/quiz/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="59" column="15" selection-start="1644" selection-end="1644" vertical-scroll-proportion="0.72895277">
+            <state line="59" column="15" selection-start="1644" selection-end="1644" vertical-scroll-proportion="0.73195875">
               <folding />
             </state>
           </provider>
@@ -120,7 +119,7 @@
       <file leaf-file-name="settings.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/CustomerQuiz/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="31" column="23" selection-start="1239" selection-end="1239" vertical-scroll-proportion="-6.68">
+            <state line="31" column="23" selection-start="1138" selection-end="1138" vertical-scroll-proportion="2.12">
               <folding />
             </state>
           </provider>
@@ -606,29 +605,33 @@
       <created>1369722281344</created>
       <updated>1369722281345</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="admin localization;">
+      <created>1369829411898</created>
+      <updated>1369829411898</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="-4" width="1602" height="905" extended-state="6" />
     <editor active="true" />
     <layout>
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3254282" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32947233" sideWeight="0.672391" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24131274" sideWeight="0.6758893" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24131274" sideWeight="0.67503303" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.541502" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3241107" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32496697" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" x="59" y="277" width="1402" height="705" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -676,7 +679,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="localization update" />
+    <option name="LAST_COMMIT_MESSAGE" value="admin localization;" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -705,6 +708,7 @@
     <MESSAGE value="evaluation table" />
     <MESSAGE value="sql backup" />
     <MESSAGE value="localization update" />
+    <MESSAGE value="admin localization;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -814,7 +818,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/CustomerQuiz/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="23" selection-start="1239" selection-end="1239" vertical-scroll-proportion="-6.68">
+        <state line="31" column="23" selection-start="1138" selection-end="1138" vertical-scroll-proportion="2.12">
           <folding />
         </state>
       </provider>
@@ -828,7 +832,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/quiz/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="59" column="15" selection-start="1644" selection-end="1644" vertical-scroll-proportion="0.72895277">
+        <state line="59" column="15" selection-start="1644" selection-end="1644" vertical-scroll-proportion="0.73195875">
           <folding />
         </state>
       </provider>
