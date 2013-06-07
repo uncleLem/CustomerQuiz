@@ -325,7 +325,7 @@ def getInfo(project):
                     if not (answer.value == '0' or answer.value == ''):
                         answers.append(q.text)
             except Answer.DoesNotExist:
-                print 'show must go on'
+                pass
         info.append((group.group_header, answers))
     return info
 
